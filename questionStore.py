@@ -1,4 +1,4 @@
-import random
+import random # imports random
 import string
 
 class Randomized(object):
