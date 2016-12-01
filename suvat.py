@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 increment = 0.0001  # Time increment used when calculating values
-initialSpeed = 20
-theta = np.radians(60)  # Angle that the direction of launch makes to the horizontal
+initialSpeed = 10
+theta = np.radians(70)  # Angle that the direction of launch makes to the horizontal
 
 xSpeed = initialSpeed * np.cos(theta)  # Using trig to calculate xspeed. Assumes there is no air resistance
 ySpeed = initialSpeed * np.sin(theta)
@@ -35,7 +35,7 @@ while (yPosTemp > 0):
 
 print()
 plt.plot(xPos, yPos)
-plt.axis([0, xPos[len(xPos) - 1], 0, max(yPos) + max(yPos) * .15])
+plt.axis([0, xPos[len(xPos) - 1], 0, max(yPos) + max(yPos) * .2])
 plt.xlabel("X displacement")
 plt.ylabel("Y displacement")
 index = yPos.index(max(yPos))

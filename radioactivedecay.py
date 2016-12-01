@@ -1,20 +1,19 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-initialParticles = 4000  # Number of initial particles
-exponent = 4
-decayConstant = 9.63 * 10 ** -exponent  # Decay constant of sample
-increment = 0.1  # Time increment used to populate x array
-constant = 100000 * exponent
+n0 = 50000000  # Initial number of particles in sample
+decayConstant = 0.000000000000000001  # Decay constant of the sample
+tMax = 1 / decayConstant * 10  # Maximum time to run program
+deltaT = 0.01 * 1 / decayConstant  # Length of time between each calculation
+xValues = np.arange(0, tMax, deltaT)  # Populates the array with time values from 0 to tMax with increment deltaT.
+yValues = []  # Initialising yValues array
 
-xArray = np.arange(0, increment * constant, increment)
-yArray = []
+yValues = n0 * (
+    np.exp(-decayConstant * xValues))  # Go through all yValues and calculate the particles remaining at that time
 
-for i in range(0, int((increment * constant) / increment), 1):
-    yArray.append(initialParticles * np.exp(-1 * decayConstant * i * 0.1))
-
-plt.plot(xArray, yArray)
-plt.axis([0, increment * constant, 0, initialParticles])
-plt.xlabel("Time (s)")
-plt.ylabel("Number of particles remaining")
-plt.show()
+print(len(xValues), len(yValues))
+xValues = np.asarray(xValues)
+yValues = np.asarray(yValues)
+plt.plot(xValues, yValues)  # Calling matplotlib to plot x and y values
+plt.axis([0, tMax * 0.8, 0, n0])
+plt.show()  # Printing graph to screen
