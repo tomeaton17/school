@@ -1,9 +1,0 @@
-{
-  "secure": false,
-  "base_url": "/user/testing/",
-  "hostname": "127.0.0.1",
-  "pid": 1470,
-  "port": 44648,
-  "notebook_dir": "/home/testing",
-  "url": "http://127.0.0.1:44648/user/testing/"
-}
