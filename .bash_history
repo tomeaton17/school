@@ -20,3 +20,13 @@ git commit
 git add .
 git commit
 git push
+cs home
+cd home
+cd ~
+ls
+git pull
+ls
+nano .gitignore
+git add .
+git commit
+git push

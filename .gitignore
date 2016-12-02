@@ -87,8 +87,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
-.cache
-.ipynb_checkpoints
-.ipython/profile_default
-.local/share/jupyter
+.cache/
+.ipynb_checkpoints/
+.ipython/profile_default/
+.local/share/jupyter/
 
