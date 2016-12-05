@@ -93,3 +93,4 @@ ENV/
 .ipython/profile_default/
 .local/share/jupyter/
 
+.idea/workspace.xml
