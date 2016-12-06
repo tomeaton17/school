@@ -92,5 +92,5 @@ ENV/
 .ipynb_checkpoints/
 .ipython/profile_default/
 .local/share/jupyter/
-
 .idea/workspace.xml
+.idea/inspectionProfiles/
