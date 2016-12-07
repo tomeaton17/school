@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'main.ui'
+# Form implementation generated from reading ui file 'C:\Users\TomEaton\Documents\school\main.ui'
 #
 # Created by: PyQt5 UI code generator 5.6
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Ui_main(object):
     def setupUi(self, main):
@@ -65,5 +64,4 @@ class Ui_main(object):
         main.setWindowTitle(_translate("main", "Physics Practice"))
         self.label.setText(_translate("main", "Physics Practice"))
         self.pushButton.setText(_translate("main", "Projectile motion"))
-        self.pushButton_2.setText(_translate("main", "Radioactive Decay\n"
-                                                     ""))
+        self.pushButton_2.setText(_translate("main", "Radioactive decay"))
