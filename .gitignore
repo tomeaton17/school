@@ -94,3 +94,5 @@ ENV/
 .local/share/jupyter/
 .idea/workspace.xml
 .idea/inspectionProfiles/
+.idea/misc.xml
+.idea/school.iml
