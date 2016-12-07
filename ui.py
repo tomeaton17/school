@@ -1,24 +1,24 @@
-from PyQt5 import QtGui, QtWidgets, QtCore
+from PyQt5 import QtGui, QtWidgets
 import sys
 import test
 import radioactivedecay
 import suvat
 import suvatgui
 
-class mainApp(QtWidgets.QMainWindow, test.Ui_main):
+
+class MainApp(QtWidgets.QMainWindow, test.Ui_main):
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self)
-        self.pushButton.clicked.connect(self.buttonClicked)
-        self.pushButton_2.clicked.connect(self.button2Clicked)
+        self.pushButton.clicked.connect(self.button_clicked)
+        self.pushButton_2.clicked.connect(self.button2_clicked)
+        self.suvatApp = SuvatApp(self)
 
-    def buttonClicked(self):
+    def button_clicked(self):
         self.hide()
-        self.suvatApp = suvatApp(self)
         self.suvatApp.show()
 
-    def button2Clicked(self):
-        print("your nan")
+    def button2_clicked(self):
         radioactivedecay.generate()
 
     def closeEvent(self, event):
@@ -31,15 +31,16 @@ class mainApp(QtWidgets.QMainWindow, test.Ui_main):
             event.ignore()
 
 
-class suvatApp(QtWidgets.QMainWindow, suvatgui.Ui_suvat):
+class SuvatApp(QtWidgets.QMainWindow, suvatgui.Ui_suvat):
     def __init__(self, parent):
         super(self.__class__, self).__init__(parent)
         self.setupUi(self)
-        self.pushButton.clicked.connect(self.buttonClicked)
+        self.pushButton.clicked.connect(self.button_clicked)
+        suvat.generate()
         pixmap = QtGui.QPixmap("test.png")
         self.label.setPixmap(pixmap)
 
-    def buttonClicked(self):
+    def button_clicked(self):
         self.close()
         self.parent().show()
 
@@ -52,16 +53,18 @@ class suvatApp(QtWidgets.QMainWindow, suvatgui.Ui_suvat):
         else:
             event.ignore()
 
+
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    main = mainApp()
+    main = MainApp()
     main.show()
     sys.exit(app.exec_())
 
 
-def suvatRun():
-    suvat = suvatApp()
-    suvat.show()
+def suvat_run():
+    suvat_app = SuvatApp()
+    suvat_app.show()
+
 
 if __name__ == '__main__':
     main()

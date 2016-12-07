@@ -44,7 +44,7 @@ def generate():
     plt.annotate("Maximum height: " + str(max(yPos)), (xValue, max(yPos)),
              (xValue - 0.2 * max(xPos), max(yPos) + max(yPos) * .1), arrowprops=dict(arrowstyle="->"))
     plt.grid(True)
-    plt.show()
+    plt.savefig('test.png', bbox_inches='tight', pad_inches=0)
 
 
 if __name__ == '__main__':
