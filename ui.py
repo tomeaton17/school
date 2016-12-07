@@ -4,6 +4,7 @@ import test
 import radioactivedecay
 import suvat
 import suvatgui
+import os
 
 
 class MainApp(QtWidgets.QMainWindow, test.Ui_main):
@@ -39,6 +40,7 @@ class SuvatApp(QtWidgets.QMainWindow, suvatgui.Ui_suvat):
         suvat.generate()
         pixmap = QtGui.QPixmap("test.png")
         self.label.setPixmap(pixmap)
+        os.remove('test.png')
 
     def button_clicked(self):
         self.close()
