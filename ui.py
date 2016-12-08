@@ -43,6 +43,7 @@ class SuvatApp(QtWidgets.QMainWindow, suvatgui.Ui_suvat):
         suvat.generate()
         pixmap = QtGui.QPixmap("smaller.png")
         self.label.setPixmap(pixmap)
+        os.remove('test.png')
         os.remove('smaller.png')
 
     def button_clicked(self):
