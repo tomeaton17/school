@@ -6,6 +6,7 @@ from PIL import Image
 def generate():
     increment = 0.0001  # Time increment used when calculating values
     initial_speed = 10
+    # noinspection PyTypeChecker
     theta = np.radians(70)  # Angle that the direction of launch makes to the horizontal
 
     x_speed = initial_speed * np.cos(theta)  # Using trig to calculate x_speed. Assumes there is no air resistance
@@ -30,7 +31,6 @@ def generate():
     y_pos.append(y_pos_temp)
 
     while y_pos_temp > 0:
-        x_pos_temp = x_speed * time
         y_pos_temp = (y_speed * time) + (0.5 * -9.8 * time ** 2)
         x_pos.append(x_speed * time)
         y_pos.append((y_speed * time) + (0.5 * -9.8 * time ** 2))
@@ -43,12 +43,13 @@ def generate():
     index = y_pos.index(max(y_pos))
     x_value = x_pos[int(index)]
     plt.annotate("Maximum height: " + str(max(y_pos)), (x_value, max(y_pos)),
-                (x_value - 0.2 * max(x_pos), max(y_pos) + max(y_pos) * .1), arrowprops=dict(arrowstyle="->"))
+                 (x_value - 0.2 * max(x_pos), max(y_pos) + max(y_pos) * .1), arrowprops=dict(arrowstyle="->"))
     plt.grid(True)
     plt.savefig('test.png', bbox_inches='tight', pad_inches=0)
     im = Image.open('test.png')
     size = np.asarray(im.size)
-    size /= 1.4
+    # noinspection PyAugmentAssignment
+    size = size / 1.4
     size.tolist()
     im.thumbnail(size)
     im.save('smaller.png')
