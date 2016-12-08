@@ -33,6 +33,6 @@ class RandomizedFormatter(object):
 
 
 rr = Randomized()
-question = rr.format("How much is {a:random:9:10} plus {b:random:109:110}?")
+question = rr.format("How much is {a:random:1:5} plus {b:random:109:110}?")
 print(question)
 print(rr.args['a'])

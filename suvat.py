@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-
+from PIL import Image
 
 def generate():
     increment = 0.0001  # Time increment used when calculating values
@@ -45,6 +45,12 @@ def generate():
              (xValue - 0.2 * max(xPos), max(yPos) + max(yPos) * .1), arrowprops=dict(arrowstyle="->"))
     plt.grid(True)
     plt.savefig('test.png', bbox_inches='tight', pad_inches=0)
+    im = Image.open('test.png')
+    size = np.asarray(im.size)
+    size = size / 1.4
+    size.tolist()
+    im.thumbnail(size)
+    im.save('smaller.png')
 
 
 if __name__ == '__main__':

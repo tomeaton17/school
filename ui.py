@@ -1,10 +1,12 @@
-from PyQt5 import QtGui, QtWidgets
+import os
 import sys
-import test
+
+from PyQt5 import QtGui, QtWidgets
+
 import radioactivedecay
 import suvat
 import suvatgui
-import os
+import test
 
 
 class MainApp(QtWidgets.QMainWindow, test.Ui_main):
@@ -19,7 +21,8 @@ class MainApp(QtWidgets.QMainWindow, test.Ui_main):
         self.hide()
         self.suvatApp.show()
 
-    def button2_clicked(self):
+    @staticmethod
+    def button2_clicked():
         radioactivedecay.generate()
 
     def closeEvent(self, event):
@@ -58,14 +61,9 @@ class SuvatApp(QtWidgets.QMainWindow, suvatgui.Ui_suvat):
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    main = MainApp()
-    main.show()
+    mainapp = MainApp()
+    mainapp.show()
     sys.exit(app.exec_())
-
-
-def suvat_run():
-    suvat_app = SuvatApp()
-    suvat_app.show()
 
 
 if __name__ == '__main__':
