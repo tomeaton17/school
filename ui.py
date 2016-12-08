@@ -7,6 +7,7 @@ import radioactivedecay
 import projectile
 import projectilegui
 import mainui
+import questionStore
 
 
 class MainApp(QtWidgets.QMainWindow, mainui.Ui_main):
@@ -40,16 +41,31 @@ class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
     def __init__(self, parent):
         super(self.__class__, self).__init__(parent)
         self.setupUi(self)
+        self.randomised = questionStore.Randomized()
         self.pushButton.clicked.connect(self.button_clicked)
+        self.pushButton_2.clicked.connect(self.button2_clicked)
         projectile.generate()
         pixmap = QtGui.QPixmap("smaller.png")
         self.label.setPixmap(pixmap)
         os.remove('test.png')
         os.remove('smaller.png')
+        self.answer = ""
+        self.generate_question()
 
     def button_clicked(self):
         self.close()
         self.parent().show()
+
+    def button2_clicked(self):
+        if str(self.randomised.get_answer()) == str(str(self.lineEdit.text())):
+            print("correct")
+        else:
+            print("wrong")
+
+    def generate_question(self):
+        self.label_3.setText(str(questionStore.load("projectilemotionquestions", self.randomised)))
+        self.answer = self.randomised.get_answer()
+        print(self.answer)
 
     def closeEvent(self, event):
         # noinspection PyTypeChecker,PyCallByClass

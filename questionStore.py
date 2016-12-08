@@ -12,6 +12,10 @@ class Randomized(object):
     def format(self, s):
         return string.Formatter().vformat(s, args=(), kwargs=self)
 
+    def get_answer(self):
+        if(self.args['equation'] == "addition"):
+            return self.args['a'] + self.args['b']
+
 
 class RandomizedFormatter(object):
     def __init__(self, name, args):
@@ -31,8 +35,12 @@ class RandomizedFormatter(object):
             self.args[self.name] = value
             return str(value)
 
+def load(questionType, object):
+    lines = [line.rstrip('\n') for line in open(questionType + ".txt")]
+    return object.format(random.choice(lines))
 
-rr = Randomized()
-question = rr.format("How much is {a:random:1:5} plus {b:random:109:110}? {equation:type:suvat}")
-print(question)
-print(rr.args['equation'])
+if __name__ == '__main__':
+    rr = Randomized()
+    question = rr.format("How much is {a:random:1:5} plus {b:random:109:110}? {equation:type:suvat}")
+    print(question)
+    print(rr.args['equation'])
