@@ -26,6 +26,7 @@ class MainApp(QtWidgets.QMainWindow, test.Ui_main):
         radioactivedecay.generate()
 
     def closeEvent(self, event):
+        # noinspection PyCallByClass,PyTypeChecker
         reply = QtWidgets.QMessageBox.question(self, 'Alert', "Are you sure about that?",
                                                QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
                                                QtWidgets.QMessageBox.No)
@@ -51,6 +52,7 @@ class SuvatApp(QtWidgets.QMainWindow, suvatgui.Ui_suvat):
         self.parent().show()
 
     def closeEvent(self, event):
+        # noinspection PyTypeChecker,PyCallByClass
         reply = QtWidgets.QMessageBox.question(self, 'Alert', "Are you sure about that?",
                                                QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
                                                QtWidgets.QMessageBox.No)
