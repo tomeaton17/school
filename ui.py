@@ -4,12 +4,12 @@ import sys
 from PyQt5 import QtGui, QtWidgets
 
 import radioactivedecay
-import suvat
-import suvatgui
-import test
+import projectile
+import projectilegui
+import mainui
 
 
-class MainApp(QtWidgets.QMainWindow, test.Ui_main):
+class MainApp(QtWidgets.QMainWindow, mainui.Ui_main):
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self)
@@ -36,12 +36,12 @@ class MainApp(QtWidgets.QMainWindow, test.Ui_main):
             event.ignore()
 
 
-class SuvatApp(QtWidgets.QMainWindow, suvatgui.Ui_suvat):
+class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
     def __init__(self, parent):
         super(self.__class__, self).__init__(parent)
         self.setupUi(self)
         self.pushButton.clicked.connect(self.button_clicked)
-        suvat.generate()
+        projectile.generate()
         pixmap = QtGui.QPixmap("smaller.png")
         self.label.setPixmap(pixmap)
         os.remove('test.png')

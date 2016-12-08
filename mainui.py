@@ -65,3 +65,4 @@ class Ui_main(object):
         self.label.setText(_translate("main", "Physics Practice"))
         self.pushButton.setText(_translate("main", "Projectile motion"))
         self.pushButton_2.setText(_translate("main", "Radioactive decay"))
+
