@@ -20,7 +20,12 @@ class RandomizedFormatter(object):
 
     def __format__(self, fmt):
         op, rest = fmt.split(':', 1)
-        if op == 'random':
+        print(fmt)
+        if op == 'type':
+            self.args[self.name] = rest
+            return ""
+
+        elif op == 'random':
             low, high = rest.split(':')
             value = random.randint(int(low), int(high))
             self.args[self.name] = value
@@ -28,6 +33,6 @@ class RandomizedFormatter(object):
 
 
 rr = Randomized()
-question = rr.format("How much is {a:random:1:5} plus {b:random:109:110}?")
+question = rr.format("How much is {a:random:1:5} plus {b:random:109:110}? {equation:type:suvat}")
 print(question)
-print(rr.args['a'])
+print(rr.args['equation'])
