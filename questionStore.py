@@ -1,5 +1,6 @@
-import random # imports random
+import random
 import string
+
 
 class Randomized(object):
     def __init__(self):
@@ -10,12 +11,6 @@ class Randomized(object):
 
     def format(self, s):
         return string.Formatter().vformat(s, args=(), kwargs=self)
-
-    def equation(self, s):
-        temporarystring = string.Formatter().vformat(s, args=(), kwargs=self)
-        equation, type = temporarystring.split(':', 1)
-        if(equation == 'equation'):
-            print(type)
 
 
 class RandomizedFormatter(object):
