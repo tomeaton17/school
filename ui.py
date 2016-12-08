@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 
 from PyQt5 import QtGui, QtWidgets
 
@@ -59,11 +60,12 @@ class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
 
     def submit(self):
         if str(self.randomised.get_answer()) == str(str(self.lineEdit.text())):
-            print("correct")
+            QtWidgets.QMessageBox.information(self, "Well done", "Congrats")
             self.lineEdit.setText("")
             self.generate_question()
         else:
-            print("wrong")
+            QtWidgets.QMessageBox.critical(self, "Incorrect", "Unlucky m8")
+            self.lineEdit.setText("")
 
     def generate_question(self):
         self.label_3.setText(str(questionStore.load("projectilemotionquestions", self.randomised)))
