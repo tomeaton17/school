@@ -43,7 +43,8 @@ class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
         self.setupUi(self)
         self.randomised = questionStore.Randomized()
         self.pushButton.clicked.connect(self.button_clicked)
-        self.pushButton_2.clicked.connect(self.button2_clicked)
+        self.pushButton_2.clicked.connect(self.submit)
+        self.lineEdit.returnPressed.connect(self.submit)
         projectile.generate()
         pixmap = QtGui.QPixmap("smaller.png")
         self.label.setPixmap(pixmap)
@@ -56,9 +57,11 @@ class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
         self.close()
         self.parent().show()
 
-    def button2_clicked(self):
+    def submit(self):
         if str(self.randomised.get_answer()) == str(str(self.lineEdit.text())):
             print("correct")
+            self.lineEdit.setText("")
+            self.generate_question()
         else:
             print("wrong")
 
