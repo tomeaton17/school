@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image
 
 
-def generate():
+def generate(y_offset):
     increment = 0.0001  # Time increment used when calculating values
     initial_speed = 10
     # noinspection PyTypeChecker
@@ -13,7 +13,6 @@ def generate():
     y_speed = initial_speed * np.sin(theta)
 
     x_offset = 0  # Initial x position. Can be changed to add an offset which can be in a question
-    y_offset = 0  # Initial y position. Can be changed to add an offset which can be in a question
 
     x_pos = []  # X position array
     y_pos = []  # Y position array

@@ -1,14 +1,13 @@
 import os
 import sys
-import time
 
 from PyQt5 import QtGui, QtWidgets
 
-import radioactivedecay
+import mainui
 import projectile
 import projectilegui
-import mainui
 import questionStore
+import radioactivedecay
 
 
 class MainApp(QtWidgets.QMainWindow, mainui.Ui_main):
@@ -38,6 +37,7 @@ class MainApp(QtWidgets.QMainWindow, mainui.Ui_main):
             event.ignore()
 
 
+# noinspection PyTypeChecker,PyCallByClass,PyCallByClass
 class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
     def __init__(self, parent):
         super(self.__class__, self).__init__(parent)
