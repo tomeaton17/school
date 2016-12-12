@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from matplotlib import patches
 import numpy as np
 
 
@@ -28,7 +29,10 @@ def y_displacement(y_offset, initial_speed, theta):
         y_pos.append((y_speed * time) + (0.5 * -9.8 * time ** 2) + 12)
         time += increment
     x_distance = max(x_pos)
-    print(x_pos, y_pos)
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
     plt.plot(x_pos, y_pos)
     plt.annotate(s="", xy=(-1, y_offset), xytext=(-1, 0), arrowprops=dict(arrowstyle='<->'))
     plt.annotate(s="", xy=(0, -1), xytext=(max(x_pos), -1), arrowprops=dict(arrowstyle='<->'))
@@ -44,9 +48,13 @@ def y_displacement(y_offset, initial_speed, theta):
     plt.text(x_pos[y_pos.index(max(y_pos))] + 1, ((max(y_pos) - y_offset) / 2) + y_offset, str(max(y_pos) - y_offset),
              style='normal')
     plt.text(0, initial_speed * 0.1 + y_offset, str(initial_speed), style='normal')
+    arc = patches.Arc((0, y_offset), 7, 7,
+                      angle=0, theta1=360, theta2=30, linewidth=1)
+    ax.add_patch(arc)
     plt.axis([-5, x_distance, -5, max(y_pos) + 5])
     plt.axis('off')
     plt.show()
+    # r'\textbf{\ensuremath{\theta}'
 
 
 def calculate_point(start_x, start_y, angle, length):
