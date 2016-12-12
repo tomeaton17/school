@@ -51,8 +51,5 @@ def load(questionType, object):
 
 if __name__ == '__main__':
     rr = Randomized()
-    question = rr.format("A ball is projected with speed {a:random:10:30}. At the starting point the ball is {b:random:30:40}m of the ground. The highest point of the ball is {toset:set:tovalue} {equation:type:findtheta}")
-    question = questionplotclass.ThetaQuestion(rr.args['b'], rr.args['a'], random.randint(20, 50))
-    question.find_theta()
-    print(question)
-    print(rr.args['a'], rr.args['b'])
+    load("projectilemotionquestions", rr)
+    print(rr.get_answer())
