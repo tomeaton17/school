@@ -1,5 +1,6 @@
 import random
 import string
+import questionplotclass
 
 
 class Randomized(object):
@@ -15,6 +16,11 @@ class Randomized(object):
     def get_answer(self):
         if(self.args['equation'] == "addition"):
             return self.args['a'] + self.args['b']
+        if(self.args['equation'] ==  "findtheta"):
+            question = questionplotclass.ThetaQuestion(self.args['b'], self.args['a'], random.randint(20,50))
+            question.find_theta()
+            return question.answer_theta()
+
 
 
 
@@ -26,7 +32,7 @@ class RandomizedFormatter(object):
     def __format__(self, fmt):
         op, rest = fmt.split(':', 1)
         print(fmt)
-        if op == 'type':
+        if op == 'set':
             self.args[self.name] = rest
             return ""
 
@@ -45,6 +51,8 @@ def load(questionType, object):
 
 if __name__ == '__main__':
     rr = Randomized()
-    question = rr.format("How much is {a:random:1:5} plus {b:random:109:110}? {equation:type:suvat}")
+    question = rr.format("A ball is projected with speed {a:random:10:30}. At the starting point the ball is {b:random:30:40}m of the ground. The highest point of the ball is {toset:set:tovalue} {equation:type:findtheta}")
+    question = questionplotclass.ThetaQuestion(rr.args['b'], rr.args['a'], random.randint(20, 50))
+    question.find_theta()
     print(question)
-    print(rr.args['equation'])
+    print(rr.args['a'], rr.args['b'])
