@@ -43,6 +43,7 @@ def y_displacement(y_offset, initial_speed, theta):
     plt.text(max(x_pos) / 2, -max(x_pos) * 0.05, str(max(x_pos)), style='normal')
     plt.text(x_pos[y_pos.index(max(y_pos))] + 1, ((max(y_pos) - y_offset) / 2) + y_offset, str(max(y_pos) - y_offset),
              style='normal')
+    plt.text(0, initial_speed * 0.1 + y_offset, str(initial_speed), style='normal')
     plt.axis([-5, x_distance, -5, max(y_pos) + 5])
     plt.axis('off')
     plt.show()
