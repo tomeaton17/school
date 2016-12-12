@@ -1,2 +1,2 @@
 What is {a:random:3:10} + {b:random:10:20}? {equation:type:addition}
-A ball is projected with speed {a:random:10:40}. At the starting point the ball is {b:random:5:30}m of the ground. The highest point of the ball is {equation:set:tovalue} {equation:type:projectiletheta}
+A ball is projected with speed {a:random:10:40}. At the starting point the ball is {b:random:5:30}m of the ground. The highest point of the ball is {toset:set:tovalue} {equation:type:findtheta}

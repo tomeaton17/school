@@ -119,7 +119,6 @@ def y_displacement(y_offset, initial_speed, theta, find_theta, find_xdistance, f
         ax.add_patch(arc)
         plt.show()
 
-
 def calculate_point(start_x, start_y, angle, length):
     endpoint = [start_x + (length * np.cos(angle)), start_y + (length * np.sin(angle))]
     return endpoint

@@ -17,6 +17,7 @@ class Randomized(object):
             return self.args['a'] + self.args['b']
 
 
+
 class RandomizedFormatter(object):
     def __init__(self, name, args):
         self.name = name
@@ -29,6 +30,9 @@ class RandomizedFormatter(object):
             self.args[self.name] = rest
             return ""
 
+        if op == 'type':
+            self.args[self.name] = rest
+            return ""
         elif op == 'random':
             low, high = rest.split(':')
             value = random.randint(int(low), int(high))
