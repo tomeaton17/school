@@ -32,6 +32,7 @@ def y_displacement(y_offset, initial_speed, theta):
     plt.plot(x_pos, y_pos)
     plt.annotate(s="", xy=(-1, y_offset), xytext=(-1, 0), arrowprops=dict(arrowstyle='<->'))
     plt.annotate(s="", xy=(0, -1), xytext=(max(x_pos), -1), arrowprops=dict(arrowstyle='<->'))
+    plt.annotate(s="", xy=(0, y_offset), xytext=(calculate_point(0, 12, theta, 10)), arrowprops=dict(arrowstyle='<-'))
     plt.plot([0, x_distance], [0, 0], color='k', linestyle='-', linewidth=2)
     plt.plot([0, 0], [0, y_offset], color='k', linestyle='-', linewidth=2)
     plt.plot([-0, -1], [y_offset, y_offset], color='k', linestyle='-', linewidth=2)
@@ -45,5 +46,10 @@ def y_displacement(y_offset, initial_speed, theta):
     plt.axis([-5, x_distance, -5, max(y_pos) + 5])
     plt.axis('off')
     plt.show()
+
+
+def calculate_point(start_x, start_y, angle, length):
+    endpoint = [start_x + (length * np.cos(angle)), start_y + (length * np.sin(angle))]
+    return endpoint
 
 y_displacement(12, 20, 30)
