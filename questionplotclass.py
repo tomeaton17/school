@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from matplotlib import patches
 import numpy as np
+from PIL import Image
 
 class ThetaQuestion:
     def __init__(self, y_offset, initial_speed, theta):
@@ -66,7 +67,14 @@ class ThetaQuestion:
         arc = patches.Arc((0, self.y_offset), 7, 7,
                           angle=0, theta1=360, theta2=30, linewidth=1)
         ax.add_patch(arc)
-        plt.show()
+        plt.savefig('test.png', bbox_inches='tight', pad_inches=0)
+        im = Image.open('test.png')
+        size = np.asarray(im.size)
+        # noinspection PyAugmentAssignment
+        size = size / 1.4
+        size.tolist()
+        im.thumbnail(size)
+        im.save('smaller.png')
 
     def find_xdistance(self):
         self.calculate_projectile()

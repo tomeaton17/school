@@ -14,10 +14,8 @@ class Randomized(object):
         return string.Formatter().vformat(s, args=(), kwargs=self)
 
     def get_answer(self):
-        if(self.args['equation'] == "addition"):
-            return self.args['a'] + self.args['b']
         if(self.args['equation'] ==  "findtheta"):
-            question = questionplotclass.ThetaQuestion(self.args['b'], self.args['a'], random.randint(20,50))
+            question = questionplotclass.ThetaQuestion(self.args['b'], self.args['a'], random.randint(40,60))
             question.find_theta()
             return question.answer_theta()
 

@@ -46,20 +46,16 @@ class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
         self.pushButton.clicked.connect(self.button_clicked)
         self.pushButton_2.clicked.connect(self.submit)
         self.lineEdit.returnPressed.connect(self.submit)
-        projectile.generate()
-        pixmap = QtGui.QPixmap("smaller.png")
-        self.label.setPixmap(pixmap)
-        os.remove('test.png')
-        os.remove('smaller.png')
         self.answer = ""
         self.generate_question()
+
 
     def button_clicked(self):
         self.close()
         self.parent().show()
 
     def submit(self):
-        if str(self.randomised.get_answer()) == str(str(self.lineEdit.text())):
+        if str(self.answer) == str(self.lineEdit.text()):
             QtWidgets.QMessageBox.information(self, "Well done", "Congrats")
             self.lineEdit.setText("")
             self.generate_question()
@@ -68,8 +64,13 @@ class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
             self.lineEdit.setText("")
 
     def generate_question(self):
-        self.label_3.setText(str(questionStore.load("projectilemotionquestions", self.randomised)))
+        string = str(questionStore.load("projectilemotionquestions", self.randomised))
+        self.label_3.setText(self.randomised.format(string))
         self.answer = self.randomised.get_answer()
+        pixmap = QtGui.QPixmap("smaller.png")
+        self.label.setPixmap(pixmap)
+        os.remove('test.png')
+        os.remove('smaller.png')
         print(self.answer)
 
     def closeEvent(self, event):
