@@ -29,7 +29,6 @@ class RandomizedFormatter(object):
 
     def __format__(self, fmt):
         op, rest = fmt.split(':', 1)
-        print(fmt)
         if op == 'set':
             self.args[self.name] = rest
             return ""

@@ -71,7 +71,6 @@ class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
         self.label.setPixmap(pixmap)
         os.remove('test.png')
         os.remove('smaller.png')
-        print(self.answer)
 
     def closeEvent(self, event):
         # noinspection PyTypeChecker,PyCallByClass
