@@ -41,6 +41,7 @@ class Ui_suvat(object):
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.label_3 = QtWidgets.QLabel(self.gridLayoutWidget_2)
         self.label_3.setMaximumSize(QtCore.QSize(100000, 16777215))
+        self.label_3.setWordWrap(True)
         self.label_3.setObjectName("label_3")
         self.gridLayout_2.addWidget(self.label_3, 0, 0, 1, 1)
         spacerItem2 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
