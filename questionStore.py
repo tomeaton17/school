@@ -6,6 +6,7 @@ import questionplotclass
 class Randomized(object):
     def __init__(self):
         self.args = {}
+        self.question = None
 
     def __getitem__(self, name):
         return RandomizedFormatter(name, self.args)
@@ -15,9 +16,9 @@ class Randomized(object):
 
     def get_answer(self):
         if(self.args['equation'] ==  "findtheta"):
-            question = questionplotclass.ThetaQuestion(self.args['b'], self.args['a'], random.randint(40,60))
-            question.find_theta()
-            return question.answer_theta()
+            self.question = questionplotclass.ThetaQuestion(self.args['b'], self.args['a'], random.randint(40,60))
+            self.question.find_theta()
+            return self.question
 
 
 
