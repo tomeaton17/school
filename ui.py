@@ -67,7 +67,7 @@ class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
         string = str(questionStore.load("projectilemotionquestions", self.randomised))
         temp = self.randomised.format(string)
         test = self.randomised.get_answer()
-        temp = temp + test.answer_max_height()
+        temp = str(temp) + str(test.answer_max_height())
         self.label_3.setText(temp)
         self.answer = test.answer_theta()
         pixmap = QtGui.QPixmap("smaller.png")
