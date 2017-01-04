@@ -23,6 +23,10 @@ class Randomized(object):
             self.question = questionplotclass.ThetaQuestion(self.args['c'], self.args['a'], self.args['b'])
             self.question.find_max_height()
             return self.question
+        if (self.args['equation'] == 'findxdistance'):
+            self.question = questionplotclass.ThetaQuestion(self.args['c'], self.args['a'], self.args['b'])
+            self.question.find_xdistance()
+            return self.question
 
 
 
@@ -34,9 +38,6 @@ class RandomizedFormatter(object):
 
     def __format__(self, fmt):
         op, rest = fmt.split(':', 1)
-        if op == 'set':
-            self.args[self.name] = rest
-            return ""
 
         if op == 'type':
             self.args[self.name] = rest

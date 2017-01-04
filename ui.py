@@ -72,6 +72,10 @@ class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
             self.answer = test.answer_theta()
         if (self.randomised.args['equation'] == 'findmaxheight'):
             self.answer = test.answer_max_height()
+        if (self.randomised.args['equation'] == 'findxdistance'):
+            temp = str(temp) + str(
+                test.answer_max_height()) + ". How far does the ball travel before it hits the ground?"
+            self.answer = test.answer_xdistance()
         self.label_3.setText(temp)
 
         pixmap = QtGui.QPixmap("smaller.png")
