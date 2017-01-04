@@ -19,6 +19,10 @@ class Randomized(object):
             self.question = questionplotclass.ThetaQuestion(self.args['b'], self.args['a'], random.randint(40,60))
             self.question.find_theta()
             return self.question
+        if (self.args['equation'] == "findmaxheight"):
+            self.question = questionplotclass.ThetaQuestion(self.args['c'], self.args['a'], self.args['b'])
+            self.question.find_max_height()
+            return self.question
 
 
 

@@ -1,1 +1,2 @@
 A ball is projected with speed {a:random:20:40}. At the starting point the ball is {b:random:5:30}m of the ground. The highest point of the ball is {toset:set:tovalue} {equation:type:findtheta}
+A ball is projected with speed {a:random:20:40} at an angle {b:random:30:50} from the horizontal. At the starting point the ball is {c:random:5:30}m of the ground. What is the highest point that the ball reaches? {equation:type:findmaxheight}

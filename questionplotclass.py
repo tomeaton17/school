@@ -8,7 +8,6 @@ class ThetaQuestion:
         self.y_offset = y_offset
         self.initial_speed = initial_speed
         self.theta = theta
-        print(theta)
         self.x_pos = []
         self.y_pos = []
 
@@ -67,6 +66,7 @@ class ThetaQuestion:
         arc = patches.Arc((0, self.y_offset), 7, 7,
                           angle=0, theta1=360, theta2=30, linewidth=1)
         ax.add_patch(arc)
+        print(self.theta)
         plt.savefig('test.png', bbox_inches='tight', pad_inches=0)
         im = Image.open('test.png')
         size = np.asarray(im.size)
@@ -145,10 +145,18 @@ class ThetaQuestion:
         plt.axis('off')
         plt.text(0 + self.initial_speed * 0.09, self.y_offset + self.initial_speed * 0.02,
                  str(self.theta))
-        arc = patches.Arc((0, self.y_offset), 7, 7,
-                          angle=0, theta1=360, theta2=30, linewidth=1)
+        arc = patches.Arc((0, self.y_offset), 10, 10,
+                          angle=0, theta1=360, theta2=self.theta, linewidth=1)
         ax.add_patch(arc)
-        plt.show()
+        plt.savefig('test.png', bbox_inches='tight', pad_inches=0)
+        im = Image.open('test.png')
+        size = np.asarray(im.size)
+        # noinspection PyAugmentAssignment
+        size = size / 1.4
+        size.tolist()
+        im.thumbnail(size)
+        im.save('smaller.png')
+        print(self.answer_max_height())
 
     @staticmethod
     def calculate_point(start_x, start_y, angle, length):
