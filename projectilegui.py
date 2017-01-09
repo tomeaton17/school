@@ -32,6 +32,9 @@ class Ui_suvat(object):
         self.gridLayout.addItem(spacerItem, 0, 2, 1, 1)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem1, 0, 0, 1, 1)
+        self.pushButton_3 = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.gridLayout.addWidget(self.pushButton_3, 0, 3, 1, 1)
         self.gridLayoutWidget_2 = QtWidgets.QWidget(self.centralWidget)
         self.gridLayoutWidget_2.setGeometry(QtCore.QRect(0, 70, 1081, 431))
         self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
@@ -83,6 +86,7 @@ class Ui_suvat(object):
         _translate = QtCore.QCoreApplication.translate
         suvat.setWindowTitle(_translate("suvat", "suvat"))
         self.label_2.setText(_translate("suvat", "Projectile motion questions"))
+        self.pushButton_3.setText(_translate("suvat", "Skip Question"))
         self.label_3.setText(_translate("suvat", "<html><head/><body><p><span style=\" font-size:36pt;\">Question will go here</span></p><p><span style=\" font-size:36pt;\">testing</span></p></body></html>"))
         self.lineEdit.setPlaceholderText(_translate("suvat", "Enter your answer here"))
         self.pushButton_2.setText(_translate("suvat", "Submit"))

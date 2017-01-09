@@ -1,10 +1,10 @@
+import math
 import os
 import sys
 
 from PyQt5 import QtGui, QtWidgets
 
 import mainui
-import projectile
 import projectilegui
 import questionStore
 import radioactivedecay
@@ -45,17 +45,31 @@ class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
         self.randomised = questionStore.Randomized()
         self.pushButton.clicked.connect(self.button_clicked)
         self.pushButton_2.clicked.connect(self.submit)
+        self.pushButton_3.clicked.connect(self.skip)
         self.lineEdit.returnPressed.connect(self.submit)
         self.answer = ""
         self.generate_question()
 
+    def skip(self):
+        self.generate_question()
 
     def button_clicked(self):
         self.close()
         self.parent().show()
 
     def submit(self):
-        if str(self.answer) == str(self.lineEdit.text()):
+        if '.' in self.lineEdit.text():
+            exponent = len(self.lineEdit.text().split('.')[1])
+            rounded_answer = round(self.answer, exponent)
+            print(rounded_answer)
+        else:
+            rounded_answer = self.answer / 10
+            print(rounded_answer)
+            rounded_answer = round(rounded_answer, 1)
+            rounded_answer *= 10
+            print(rounded_answer)
+            rounded_answer = int(rounded_answer)
+        if str(rounded_answer) == str(self.lineEdit.text()):
             QtWidgets.QMessageBox.information(self, "Well done", "Congrats")
             self.lineEdit.setText("")
             self.generate_question()
@@ -66,16 +80,16 @@ class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
     def generate_question(self):
         string = str(questionStore.load("projectilemotionquestions", self.randomised))
         temp = self.randomised.format(string)
-        test = self.randomised.get_answer()
+        temporary_object = self.randomised.get_answer()
         if (self.randomised.args['equation'] == 'findtheta'):
-            temp = str(temp) + str(test.answer_max_height()) + " Find theta in degreees."
-            self.answer = test.answer_theta()
+            temp = str(temp) + str(temporary_object.answer_max_height()) + " Find theta in degreees."
+            self.answer = temporary_object.answer_theta()
         if (self.randomised.args['equation'] == 'findmaxheight'):
-            self.answer = test.answer_max_height()
+            self.answer = temporary_object.answer_max_height()
         if (self.randomised.args['equation'] == 'findxdistance'):
             temp = str(temp) + str(
-                test.answer_max_height()) + ". How far does the ball travel before it hits the ground?"
-            self.answer = test.answer_xdistance()
+                temporary_object.answer_max_height()) + ". How far does the ball travel before it hits the ground?"
+            self.answer = temporary_object.answer_xdistance()
         self.label_3.setText(temp)
 
         pixmap = QtGui.QPixmap("smaller.png")

@@ -86,7 +86,7 @@ class ThetaQuestion:
         plt.plot(self.x_pos, self.y_pos)
         plt.annotate(s="", xy=(-1, self.y_offset), xytext=(-1, 0), arrowprops=dict(arrowstyle='<->'))
         plt.annotate(s="", xy=(0, -1), xytext=(max(self.x_pos), -1), arrowprops=dict(arrowstyle='<->'))
-        plt.annotate(s="", xy=(0, self.y_offset), xytext=(self.calculate_point(0, 12, np.radians(self.theta), 10)),
+        plt.annotate(s="", xy=(0, self.y_offset), xytext=(self.calculate_point(0, self.y_offset, np.radians(self.theta), 10)),
                      arrowprops=dict(arrowstyle='<-'))
         plt.plot([0, x_distance], [0, 0], color='k', linestyle='-', linewidth=2)
         plt.plot([0, 0], [0, self.y_offset], color='k', linestyle='-', linewidth=2)
@@ -119,6 +119,7 @@ class ThetaQuestion:
         size.tolist()
         im.thumbnail(size)
         im.save('smaller.png')
+        print(self.answer_xdistance())
 
     def find_max_height(self):
         self.calculate_projectile()
