@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
-from matplotlib import patches
 import numpy as np
 from PIL import Image
+from matplotlib import patches
+
 
 class ThetaQuestion:
     def __init__(self, y_offset, initial_speed, theta):
@@ -63,8 +64,8 @@ class ThetaQuestion:
         plt.axis([-5, x_distance, -5, max(self.y_pos) + 5])
         plt.axis('off')
         plt.text(0 + self.initial_speed * 0.09, self.y_offset + self.initial_speed * 0.02, r'\textbf{\ensuremath{\theta}')
-        arc = patches.Arc((0, self.y_offset), 7, 7,
-                          angle=0, theta1=360, theta2=30, linewidth=1)
+        arc = patches.Arc((0, self.y_offset), 10, 10,
+                          angle=0, theta1=360, theta2=self.theta, linewidth=1)
         ax.add_patch(arc)
         print(self.theta)
         plt.savefig('test.png', bbox_inches='tight', pad_inches=0)
@@ -108,8 +109,8 @@ class ThetaQuestion:
         plt.axis('off')
         plt.text(0 + self.initial_speed * 0.09, self.y_offset + self.initial_speed * 0.02,
                  str(self.theta))
-        arc = patches.Arc((0, self.y_offset), 7, 7,
-                          angle=0, theta1=360, theta2=30, linewidth=1)
+        arc = patches.Arc((0, self.y_offset), 10, 10,
+                          angle=0, theta1=360, theta2=self.theta, linewidth=1)
         ax.add_patch(arc)
         plt.savefig('test.png', bbox_inches='tight', pad_inches=0)
         im = Image.open('test.png')
