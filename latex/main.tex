@@ -1,0 +1,17 @@
+\documentclass{report}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+\usepackage[backend=bibtex]{biblatex}
+\bibliography{bib/database}
+\graphicspath{{img/}}
+\begin{document}
+\include{file/title}
+\tableofcontents
+\begingroup
+\let\clearpage\relax
+\listoffigures
+\listoftables
+\endgroup
+\justifying
+\include{file/analysis}
+\end{document}
