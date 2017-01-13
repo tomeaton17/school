@@ -1,9 +1,9 @@
 \documentclass{report}
 \usepackage{graphicx}
 \usepackage{ragged2e}
-\usepackage[backend=bibtex]{biblatex}
-\bibliography{bib/database}
+\usepackage[backend=biber, style=numeric ]{biblatex}
 \graphicspath{{img/}}
+\bibliography{bib/database} 
 \begin{document}
 \include{file/title}
 \tableofcontents
@@ -14,4 +14,5 @@
 \endgroup
 \justifying
 \include{file/analysis}
+\printbibliography
 \end{document}
