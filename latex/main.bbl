@@ -19,24 +19,29 @@
 
 \refsection{0}
   \sortlist[entry]{nty/global/}
-    \entry{PHET}{misc}{}
+    \entry{phet}{online}{}
       \name{author}{1}{}{%
-        {{hash=130c2db3a815a9164370747220ba98b9}{%
-           family={{\relax PHET Interactive Simulations}},
-           familyi={{\relax PHET Interactive Simulations}\bibinitperiod}}}%
+        {{hash=c2e7eab2d76f58b97be4df14d9ac105a}{%
+           family={Simulations},
+           familyi={S\bibinitperiod},
+           given={PHET\bibnamedelima Interactive},
+           giveni={P\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
       }
-      \strng{namehash}{130c2db3a815a9164370747220ba98b9}
-      \strng{fullhash}{130c2db3a815a9164370747220ba98b9}
-      \strng{authornamehash}{130c2db3a815a9164370747220ba98b9}
-      \strng{authorfullhash}{130c2db3a815a9164370747220ba98b9}
-      \field{sortinit}{P}
-      \field{sortinithash}{24100cef455d7974167575052c29146e}
+      \strng{namehash}{c2e7eab2d76f58b97be4df14d9ac105a}
+      \strng{fullhash}{c2e7eab2d76f58b97be4df14d9ac105a}
+      \strng{authornamehash}{c2e7eab2d76f58b97be4df14d9ac105a}
+      \strng{authorfullhash}{c2e7eab2d76f58b97be4df14d9ac105a}
+      \field{sortinit}{S}
+      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Online; accessed 12-January-2017}
       \field{title}{Projectile motion}
+      \field{urlday}{13}
+      \field{urlmonth}{1}
+      \field{urlyear}{2017}
+      \field{urldateera}{ce}
       \verb{url}
-      \verb %5Curl%7Bhttps://phet.colorado.edu/en/simulation/projectile-motion%7D
+      \verb https://phet.colorado.edu/en/simulation/projectile-motion
       \endverb
     \endentry
   \endsortlist
