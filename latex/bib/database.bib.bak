@@ -7,4 +7,11 @@
   urldate = {2017-01-13},
 }
 
+@Online{mb,
+  author  = {MathsBank},
+  title   = {M2 Projectile motion question bank},
+  url     = {http://mathsbank.co.uk/home/a-level/m2/kinematics/projectiles/stones-collide},
+  urldate = {2017-01-16},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

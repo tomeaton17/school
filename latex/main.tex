@@ -1,10 +1,15 @@
 \documentclass{report}
 \usepackage{graphicx}
 \usepackage{ragged2e}
+\usepackage{amsmath}
 \usepackage[british]{babel}
-\usepackage[backend=biber, style=numeric]{biblatex}
+\usepackage[backend=biber, style=numeric, sorting=none]{biblatex}
 \graphicspath{{img/}}
-\bibliography{bib/database} 
+\usepackage[perpage]{footmisc}
+\addbibresource{bib/database.bib}
+\DefineBibliographyStrings{english}{%
+	bibliography = {References},
+} 
 \begin{document}
 \include{file/title}
 \tableofcontents
@@ -15,5 +20,5 @@
 \endgroup
 \justifying
 \include{file/analysis}
-\printbibliography
+\printbibliography[heading=bibintoc]
 \end{document}

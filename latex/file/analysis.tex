@@ -19,7 +19,84 @@ A Level physics teachers are another target group. They will be able to use this
 	\centering
 	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Analysis-000}
 	\caption[PHET Interactive projectile motion simulator.]{PHET Interactive projectile motion simulator. \autocite{phet}}
+	\label{phet}
 \end{figure}
-This software allows the user to
+This piece of software display the path of an object fired out of a cannon. You can modify the mass and diameter of the object being fired. This will only change the motion of the object if air resistance is being simulated. This simulation does have an option to enable air resistance, which will provide a more realistic simulation. However air resistance is not taken into account in the A Level Physics exam, so this feature will be left out. The launch speed and angle can also be changed. The graph generation should have changeable parameters, so that the values in the question can be used to produce a graph of itself. The user won't be allowed to directly change these values, as this is a question generation program, not a sandbox.
+\clearpage
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Analysis-001}
+	\caption[MathsBank M2 Projectile motion question bank.]{MathsBank M2 Projectile motion question bank. \autocite{mb}}
+\end{figure}
+This is an example of an exam style question. The question provides good context, making it easy to understand. A diagram is not provided, as it is expected that the student draws one for themselves. This type of question is not aimed at people just starting the topic, so the style of the question would have to be changed so that all of the information required is displayed obviously, rather than it being hidden in the text.
+\clearpage
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Analysis-002}
+	\caption[Exam-style Questions: Radioactive Decay Equations.]{Exam-style Questions: Radioactive Decay Equations. \autocite{scool}}
+\end{figure}
+These questions are extensive, and with a realistic context, making it more approachable to the student. Some of the questions are not suitable for random variation like Question 1, which are purely fact recall questions. The style of the other questions are ideal, as they are not too complex, and allow a graph or diagram to be drawn based off the information in the question.
+\section{Solution}
+\subsection{Question generation}
+\subsubsection{Projectile motion}
+The structure of the questions generated will be based on the MathsBank\autocite{mb} questions. The length of the question will be much shorter, only containing one part. This will avoid boredom from similar questions, and will avoid problems with the student having to remember answers to previous parts in order to correctly solve the next part. 
+\begin{figure}
+	\centering
+	A ball is projected with speed \(x \text{ ms}^{-1}
+	\). At the starting point the ball is \(S\) m of the ground. The highest point of the ball is \(y\)  m.
+	\caption{Example projectile motion question.}
+	\label{expm}
+\end{figure}
+\ref{expm} shows an example question, which is the style that will be generated for the user. The parameters which will be changed \(x, S \text{ and } y\) are obvious to the user, and no extra calculations are required. All of the information required to answer the question is easily shown in the question.
+\subsubsection{Radioactive Decay}
+The questions used in the program will be very similar to the questions found on S-cool\autocite{scool}. The only changes will be that the fact recall questions will be removed, due to that fact that these can't be truly randomised.
+\begin{figure}[h]
+	\centering
+	A sample of radioactive material contains \(n\) atoms and its activity is measured as \(x\) Bq. Calculate the decay constant for the sample.
+	\caption{Example radioactive decay question.}
+	\label{exrd}
+\end{figure}
 
-	
+Again, this shows how easy it is to randomise the question, with only the letter variables in \ref{exrd} having to be changed.
+
+\subsection{GUI}
+The GUI for the two different topics will be very similar, as they both have three distinct elements:	
+\begin{itemize}
+	\item{Question box}
+	\item{Graph or diagram}
+	\item{Answer box} 
+\end{itemize}
+The graph or diagram generated will be based on \ref{phet}, but it will be a much simpler version of this. Only two colours will be used, which will reduce confusion, and avoid distraction. There will also be no representation of the object being fired for clarity.
+\section{Essential Features}
+\begin{itemize}
+	\item{Function GUI Menu.}
+	\item{Clear distinction between two topics to avoid confusion.}
+	\item{Questions with random variables.}
+	\item{Simple random variables that are realistic for the question type.}
+	\item{Verification of student's answer. Answer is accepted to any amount of significant figures.}
+	\item{Graph or diagram to supplement question.}
+\end{itemize}
+\section{Limits of proposed solution}
+The main issue with this solution is that the questions won't be truly random. This is because only parts of the question are randomised. For example looking at \ref{expm} and \ref{exrd} only the letter variables are randomised. There will be a small number of base questions, which determine the style of question and this cannot be randomised as it is out of the scope of this project. For the target user of this program, this won't be a problem. They won't be using the program for too long, as they will learn the basics and then move on to harder questions. In the time that it takes to do that, they won't have time to just learn how to answer the specific type of question, instead of learning the theory behind the question.
+
+\section{Project Requirements}
+\subsection{Programming language}
+Python 3.5 will be the main project requirement as it is the programming language that the software will be written in. This language is being used because of the great number of libraries available to make the development process easier, and because it is portable, so can run on any modern computer.
+\subsection{GUI}
+To create the GUI, PyQt will be used, which is a python wrapper for QT. Qt is a cross-platform application framework that is used for developing application software that can be run on various software and hardware platforms with little or no change in the underlying codebase\autocite{qt}.This library will allow portability, and the code won't have to be rewritten due to it being a Python wrapper. Qt comes with a WYSIWYG\footnote{What you see is what you get.} editor called QtCreator, which is similar to the Visual Basic form designer. A GUI can be easily created using this, as it can be made visually, instead of having to make it in code, which is time consuming and can be hard to get right. Once the GUI is made in QtCreator, PyUIC5 can be run to convert the Qt code into Python code which can be used to display the GUI.
+\subsection{Graph generation}
+Matplotlib\footnote{Python Library used for plotting graphs.} will be used to generate the graph and diagram for display on the GUI. It is easy to use, and executes quickly, which is important to reduce waiting time for the user. The matplotlib window will not be shown directly to the user, matplotlib will be called to generate an image of the graph which will then be displayed. This is to make sure that there is no issues with graph size.
+\subsection{Hardware requirements}
+The only requirement is a relatively modern PC, that is running a contemporary operating system. 
+\subsection{Final Build}
+The final build of the software will have a .exe file that will be run by the user. The Python libraries still need to be available to the program, so they need installed on the computer. This can be done in two ways, either by installing the Anaconda Python distribution, or providing a virtualenv\footnote{An isolated Python environment} with the libraries installed. A virtualenv would be easier for the user, as they don't have to install any additional software.
+\section{Success Criteria}
+\begin{itemize}
+	\item Functional, easy to use GUI.
+	\item Randomly generated questions
+	\item Realistic values in question
+	\item Random question is shown to the user within a second of page display
+	\item Graph or diagram generated in relation to question
+	\item Graph is displayed within a second
+	\item Student's answers are verified and correct no matter the amount of significant figures.
+\end{itemize}

@@ -18,7 +18,7 @@
 
 
 \refsection{0}
-  \sortlist[entry]{nty/global/}
+  \sortlist[entry]{none/global/}
     \entry{phet}{online}{}
       \name{author}{1}{}{%
         {{hash=c2e7eab2d76f58b97be4df14d9ac105a}{%
@@ -31,8 +31,8 @@
       \strng{fullhash}{c2e7eab2d76f58b97be4df14d9ac105a}
       \strng{authornamehash}{c2e7eab2d76f58b97be4df14d9ac105a}
       \strng{authorfullhash}{c2e7eab2d76f58b97be4df14d9ac105a}
-      \field{sortinit}{S}
-      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{sortinit}{1}
+      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Projectile motion}
@@ -42,6 +42,75 @@
       \field{urldateera}{ce}
       \verb{url}
       \verb https://phet.colorado.edu/en/simulation/projectile-motion
+      \endverb
+    \endentry
+    \entry{mb}{online}{}
+      \name{author}{1}{}{%
+        {{hash=e540dbab7bb884939fd555dd2c0b7a68}{%
+           family={MathsBank},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{e540dbab7bb884939fd555dd2c0b7a68}
+      \strng{fullhash}{e540dbab7bb884939fd555dd2c0b7a68}
+      \strng{authornamehash}{e540dbab7bb884939fd555dd2c0b7a68}
+      \strng{authorfullhash}{e540dbab7bb884939fd555dd2c0b7a68}
+      \field{sortinit}{2}
+      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{M2 Projectile motion question bank}
+      \field{urlday}{16}
+      \field{urlmonth}{1}
+      \field{urlyear}{2017}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb http://mathsbank.co.uk/home/a-level/m2/kinematics/projectiles/stones-collide
+      \endverb
+    \endentry
+    \entry{scool}{online}{}
+      \name{author}{1}{}{%
+        {{hash=07edfbf91909fe616debf20b4e38e588}{%
+           family={S-cool},
+           familyi={S\bibinithyphendelim c\bibinitperiod}}}%
+      }
+      \strng{namehash}{07edfbf91909fe616debf20b4e38e588}
+      \strng{fullhash}{07edfbf91909fe616debf20b4e38e588}
+      \strng{authornamehash}{07edfbf91909fe616debf20b4e38e588}
+      \strng{authorfullhash}{07edfbf91909fe616debf20b4e38e588}
+      \field{sortinit}{3}
+      \field{sortinithash}{197da6d6c34c6b20ce45c4d4baace5a4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Exam-style Questions: Radioactive Decay Equations}
+      \field{urlday}{16}
+      \field{urlmonth}{1}
+      \field{urlyear}{2017}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb http://www.s-cool.co.uk/a-level/physics/radioactive-decay-equations/test-it/exam-style-questions
+      \endverb
+    \endentry
+    \entry{qt}{online}{}
+      \name{author}{1}{}{%
+        {{hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{sortinit}{6}
+      \field{sortinithash}{02bbed3ed82f61ae046619460488516d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Qt (software) --- Wikipedia, The Free Encyclopedia}
+      \field{urlday}{16}
+      \field{urlmonth}{1}
+      \field{urlyear}{2017}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb https://en.wikipedia.org/w/index.php?title=Qt_(software)&oldid=759833448
       \endverb
     \endentry
   \endsortlist
