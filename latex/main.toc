@@ -72,8 +72,8 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.3}Datastructures}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.1}Justification}{19}
+\contentsline {subsection}{\numberline {2.3.1}Justification}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}Algorithms}{19}
+\contentsline {section}{\numberline {2.4}Algorithms}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{21}
+\contentsline {chapter}{References}{24}

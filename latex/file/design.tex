@@ -137,7 +137,25 @@ Figure \ref{dfd} shows the main flow of the program. As you can see, most of the
 \label{randomformatterps}
 \caption{RandomisedFormatter Pseudocode}
 	\begin{algorithmic}[1]
-		\State testing
+		\Procedure{RandomisedFormatter}{}
+		\Function {init} {self, name, args}
+		\State self.name $\gets$ name
+		\State self.args $\gets$ args
+		\EndFunction
+		\Function {format} {self, fmt}
+		\State op, rest $\gets$ fmt.split(':') \Comment text before ':' into op, text after into  rest
+		\If {op == 'type'}
+		\State self.args[self.name] = rest
+		\State return None
+		\EndIf
+		\If {op == 'random'}
+		\State low, high = rest.split(':')
+		\State value $\gets$ randomNumber(low, high)
+		\State self.args[self.name] $\gets$ value
+		\State return string(value)
+		\EndIf
+		\EndFunction
+		\EndProcedure
 	\end{algorithmic}
 \end{algorithm}
 \begin{algorithm}[h]\label{ProjectileQuestion}
@@ -161,6 +179,77 @@ Figure \ref{dfd} shows the main flow of the program. As you can see, most of the
 		\endprivate
 		\EndProcedure
 	\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}[h]
+\label{projectilequestionps}
+\caption{ProjectileQuestion Pseudocode}
+\begin{algorithmic}[1]
+	\Procedure{ProjectileQuestion} {}
+	\Function {init}{self, yOffset, initialSpeed, theta}
+	\State self.yOffset $\gets$ yOffset
+	\State self.initalSpeed $\gets$ initialSpeed
+	\State self.theta $\gets$ theta
+	\EndFunction
+	\Function {calculateProjectile}{}
+	\State increment $\gets$ 0.01
+	\State theta $\gets$ radians(theta)
+	\State xSpeed $\gets$ self.initialSpeed * cos(theta)
+	\State ySpeed $\gets$ self.initialSpeed * sin(theta)
+	\State time $\gets$ 0
+	\State time $\gets$ time + increment
+	\State self.xPosArray $\gets$ []
+	\State self.yPosArray $\gets$ []
+	\State yPosTemp $\gets$ 5 \Comment To satisfy \texttt{while} loop during first run
+	\While {yPosTemp > 0}
+		\State xPosTemp $\gets$ xSpeed $\times$ time
+		\State yPosTemp $\gets$ (ySpeed $\times$ time) + (0.5 * -9.8 * $\textrm{time}^2$ + self.yOffset) 
+		\State xPosArray.append(xPosTemp)
+		\State yPosArray.append(yPosTemp)
+		\State time $\gets$ time + increment
+	\EndWhile
+	\EndFunction
+	\Function {findTheta}{}
+	\State self.calculateProjectile()
+	\State plotAsImg(thetaDiagram, self.xPosArray, self.yPosArray, graph.png)
+	\State resize(graph.png, 0.5)
+	\State save(graph.png)
+	\EndFunction
+	\Function {findXDistance}{}
+	\State self.calculateProjectile()
+	\State plotAsImg(xDistanceDiagram, self.xPosArray, self.yPosArray, graph.png)
+	\State resize(graph.png, 0.5)
+	\State save(graph.png)
+	\EndFunction
+	\Function {findMaxHeight}{}
+	\State self.calculateProjectile()
+	\State plotAsImg(maxHeightDiagram, self.xPosArray, self.yPosArray, graph.png)
+	\State resize(graph.png, 0.5)
+	\State save(graph.png)
+	\EndFunction
+	\algstore{pqps}
+	
+\end{algorithmic}
+\end{algorithm}
+\clearpage
+\begin{algorithm}[h]
+\caption{ProjectileQuestion Pseudocode continued}
+\begin{algorithmic}[1]
+	\algrestore{pqps}
+	\Function {calculatePoint}{startX, startY, angle, length}
+	\State endpoint $\gets$ [startX + (length $\times$ cos(angle)), startY + (length $\times$ sin(angle))]
+	\State return endpoint
+	\EndFunction
+	\Function {answerTheta}{}
+	\State return self.theta
+	\EndFunction 
+	\Function {answerXDistance}{}
+	\State return max(self.xPosArray)
+	\EndFunction
+	\Function {answerMaxHeight}{}
+	\State return max(self.yPosArray)
+	\EndFunction
+	\EndProcedure
+\end{algorithmic}
 \end{algorithm}
 \begin{algorithm}[h]\label{RadioactiveQuestion}
 	\caption{RadioactiveQuestion}
