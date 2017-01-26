@@ -1,0 +1,44 @@
+class ProjectileQuestion:
+	function init(self, yOffset, initialSpeed, theta):
+		self.yOffset = yOffset
+		self.initialSpeed = iinitialSpeed
+		self.theta = theta
+	function calculateProjectile(self):
+		increment = 0.001
+		theta = radians(theta)
+		xSpeed = self.initialSpeed * cos(theta)
+		ySpeed = self.initialSpeed * sin(theta)
+		time = 0
+		time = time + increment
+		self.xPosArray
+		self.yPosArray
+		yPosTemp = 5
+		while yPosTemp > 0:
+			xPosTemp = xSpeed * time
+			yPosTemp = (ySpeed * time) + (0.5 * -9.8 * time ^ 2) + self.yOffset
+			xPosArray.append(xPosTemp)
+			yPosArray.append(yPosTemp)
+	function findTheta(self):
+		self.calculateProjectile()
+		plotAsImg(thetaDiagram, self.xPosArray, self.yPosArray, graph.png)
+		resize(graph.png, 0.5)
+		save(graph.png)
+	function findXdistance(self):
+		self.calculateProjectile()
+		plotAsImg(xDistanceDiagram, self.xPosArray, self.yPosArray, graph.png)
+		resize(graph.png, 0.5)
+		save(graph.png)
+	function findMaxHeight(self):
+		self.calculateProjectile()
+		plotAsImg(maxHeightDiagram, self.xPosArray, self.yPosArray, graph.png)
+		resize(graph.png, 0.5)
+		save(graph.png)
+	function calculatePoint(startX, startY, angle, length):
+		endpoint = [startX + (length * cos(angle)), startY + (length * sin(angle))]
+		return endpoint
+	function answerTheta(self):
+		return self.theta
+	function answerXDistance(self):
+		return max(self.xPosArray)
+	function answerMaxHeight(self):
+		return max(self.yPosArray)

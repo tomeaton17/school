@@ -13,3 +13,13 @@
 \contentsline {figure}{\numberline {1.4}{\ignorespaces Example projectile motion question.}}{9}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {1.5}{\ignorespaces Example radioactive decay question.}}{9}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Context Diagram}}{14}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Level 1 Dataflow Diagram}}{14}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Default behaviour of Python's \texttt {str.format()}\autocite {pystr}}}{19}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Example string for extended string formatter}}{19}

@@ -10,15 +10,21 @@
 \DefineBibliographyStrings{english}{%
 	bibliography = {References},
 } 
+\usepackage{varwidth}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows}
 \begin{document}
 \include{file/title}
 \tableofcontents
 \begingroup
 \let\clearpage\relax
 \listoffigures
-\listoftables
+\listofalgorithms
 \endgroup
 \justifying
 \include{file/analysis}
+\include{file/design}
 \printbibliography[heading=bibintoc]
 \end{document}

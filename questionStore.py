@@ -16,15 +16,15 @@ class Randomized(object):
 
     def get_answer(self):
         if(self.args['equation'] ==  "findtheta"):
-            self.question = questionplotclass.ThetaQuestion(self.args['b'], self.args['a'], random.randint(40,60))
+            self.question = questionplotclass.ProjectileQuestion(self.args['b'], self.args['a'], random.randint(40, 60))
             self.question.find_theta()
             return self.question
         if (self.args['equation'] == "findmaxheight"):
-            self.question = questionplotclass.ThetaQuestion(self.args['c'], self.args['a'], self.args['b'])
+            self.question = questionplotclass.ProjectileQuestion(self.args['c'], self.args['a'], self.args['b'])
             self.question.find_max_height()
             return self.question
         if (self.args['equation'] == 'findxdistance'):
-            self.question = questionplotclass.ThetaQuestion(self.args['c'], self.args['a'], self.args['b'])
+            self.question = questionplotclass.ProjectileQuestion(self.args['c'], self.args['a'], self.args['b'])
             self.question.find_xdistance()
             return self.question
 

@@ -90,7 +90,7 @@
       \verb http://www.s-cool.co.uk/a-level/physics/radioactive-decay-equations/test-it/exam-style-questions
       \endverb
     \endentry
-    \entry{qt}{online}{}
+    \entry{qt}{misc}{}
       \name{author}{1}{}{%
         {{hash=9c677286866aad38f8e9b660f5411814}{%
            family={Wikipedia},
@@ -100,17 +100,42 @@
       \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
       \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
       \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
-      \field{sortinit}{6}
-      \field{sortinithash}{02bbed3ed82f61ae046619460488516d}
+      \field{sortinit}{7}
+      \field{sortinithash}{6ac7fe70cdec8cba8f65694411ce2532}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Qt (software) --- Wikipedia, The Free Encyclopedia}
-      \field{urlday}{16}
+      \field{title}{Qt (software) --- Wikipedia{,} The Free Encyclopedia}
+      \field{urlday}{17}
       \field{urlmonth}{1}
       \field{urlyear}{2017}
       \field{urldateera}{ce}
       \verb{url}
       \verb https://en.wikipedia.org/w/index.php?title=Qt_(software)&oldid=759833448
+      \endverb
+    \endentry
+    \entry{pystr}{online}{}
+      \name{author}{1}{}{%
+        {{hash=e916da348163d73c23a44e14dd07cb27}{%
+           family={Foundation},
+           familyi={F\bibinitperiod},
+           given={Python\bibnamedelima Software},
+           giveni={P\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{e916da348163d73c23a44e14dd07cb27}
+      \strng{fullhash}{e916da348163d73c23a44e14dd07cb27}
+      \strng{authornamehash}{e916da348163d73c23a44e14dd07cb27}
+      \strng{authorfullhash}{e916da348163d73c23a44e14dd07cb27}
+      \field{sortinit}{8}
+      \field{sortinithash}{2f1b0e69e7617f99664f1cd00bb9603c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Built in types - Sequence types - String formatting}
+      \field{urlday}{18}
+      \field{urlmonth}{1}
+      \field{urlyear}{2017}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb https://docs.python.org/2/library/stdtypes.html#str.format
       \endverb
     \endentry
   \endsortlist

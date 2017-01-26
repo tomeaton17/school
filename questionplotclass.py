@@ -4,7 +4,7 @@ from PIL import Image
 from matplotlib import patches
 
 
-class ThetaQuestion:
+class ProjectileQuestion:
     def __init__(self, y_offset, initial_speed, theta):
         self.y_offset = y_offset
         self.initial_speed = initial_speed

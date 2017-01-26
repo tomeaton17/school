@@ -1,0 +1,289 @@
+\tikzstyle{datastore} = [rectangle, draw=black, fill=white, text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{system} = [ellipse, draw=black, fill=white, text centered, minimum height =10em, minimum width=15em]
+\tikzstyle{process} = [rectangle, draw=black, minimum width=8em, minimum height= 7em, text centered]
+\tikzstyle{entity} = [rectangle, draw=black, minimum width=5em, minimum height= 4em, text centered]
+\tikzstyle{processtop} = [rectangle, draw=black, minimum width=8em, minimum height=2em, text centered]
+\tikzstyle{datastore} = [rectangle, draw=black, minimum width=12em, minimum height=2em, text centered]
+\tikzstyle{datastorebox} = [rectangle, draw=black, minimum width=2em, minimum height=2em, text centered]
+\chapter{Design}
+\section{Design Overview}
+The whole project can be broken down into three parts
+\begin{itemize}
+	\item Generation of question.
+	\item Generation of graph / diagram.
+	\item Display of GUI.
+\end{itemize}
+\subsection{Generation of question}
+To be able to generate the questions randomly on the fly, a bare question structure must be implemented. To create this question structure, questions found in Figure \ref{fig:mb} for example, are analysed to find the variables that are important to the question. These are highlighted in Figure \ref{expm} as the lettered variables. Once these variables are found, the question is written in a text file in a way that the variables can be formatted to what is required.
+\subsection{Generation of graph / diagram} 
+Matplotlib will be used to generate the graph as discussed earlier. It will require an equation to be able to do this. The equation could be stored in the question in the text file, but it would be easier to just store the question type in the text file. You could then code specific equations depending on the question type. This will prevent the text file from getting too long and hard to read. It will also improve runtime performance, as it will be a shorter and less complex string to parse. The graph will be generated as an image.
+\subsection{Display of GUI}
+The display of the GUI will take the generated question, and the image of the graph and collate them to show the GUI. Apart from this, the GUI needs to be able to take a user answer, and check if it is correct. It will need to provide buttons to select a topic, submit an answer and skip a question.
+\section{Diagrams}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance = 2cm]
+	\node [system] (system)at (0, 0) {System};
+	\node [entity, right of=system, xshift=10em] (student) {Student};
+	\draw [->, transform canvas={yshift=1em}] (student) -- node[anchor=south] {Answer} (system) [yshift=1em];
+	\draw [<-, transform canvas={yshift=-1em}] (student.west) -- node[anchor=south] {Question} (system) [yshift=1em];
+\end{tikzpicture}
+\caption{Context Diagram}
+\end{figure}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+	\node [entity] (student1) {Student};
+	\node [process, right of=student1, xshift=8em, label={[yshift=-5em]Load Question}] (ldquestion) {};
+	\node [processtop, above of=ldquestion, yshift=-.35em] (ldquestiontop) {1};
+	\draw [->] (student1) -- node[anchor=south] {Topic} (ldquestion);
+	\node [process, right of=ldquestion, xshift=12em, text width=3em, label={[yshift=-6.25em]\begin{varwidth}{5em}Generate random variables\end{varwidth}}] (randomgen) {};
+	\node [processtop, above of=randomgen, yshift=-.35em] (randomgentop) {2};
+	\draw [->] (ldquestion) -- node[anchor=south, yshift=.1em] {Generation} node[anchor=north, yshift=-.1em] {range} (randomgen);
+	\node [datastore, below of=randomgen, yshift=-8em, label={[yshift=-1.85em, xshift=1em]\small Temporary variables}] (tempvar) {};
+	\node [datastorebox, left of=tempvar, xshift=-2.15em] (tempvarside) {D1};
+	\draw [->] (randomgen) -- node[anchor=west] {\begin{varwidth}{5em}Random variables\end{varwidth}}(tempvar);
+	\node [process, left of=tempvar, xshift=-11em, text width=3em, label={[yshift=-5.8em]\begin{varwidth}{5em}Format question\end{varwidth}}] (questionformat) {};
+	\node [processtop, above of=questionformat, yshift=-.35em] (questionformattop) {3};
+	\draw [->] (tempvar) -- node[anchor=south] {\small Random} node[anchor=north]{\small variables}(questionformat);
+	\node [entity, below of=questionformat, yshift=-6em] (student2) {Student};
+	\draw [->] (questionformat) -- node[anchor=west] {Question} (student2);
+	\node [process, left of=questionformat, xshift=-9em, text width=3em, label={[yshift=-5.8em]\begin{varwidth}{5em}Validate answer\end{varwidth}}] (answervalidate) {};
+	\node [processtop, above of=answervalidate, yshift=-.35em] (questionformattop) {4};
+	\draw [->] (questionformat) -- node[anchor=south] {\small Answer}(answervalidate);
+	\draw [->] (student1) -- node[anchor=west] {\begin{varwidth}{3em}Student answer\end{varwidth}}(answervalidate);
+	\draw [->] (answervalidate) |-  node[anchor=south, yshift=-2em, xshift=4.5em] {Feedback}(student2) ;
+	\draw [->] (ldquestion) -- node[anchor=west] {Empty question}(questionformat);
+\end{tikzpicture}
+\caption{Level 1 Dataflow Diagram}
+\label{dfd}
+\end{figure}
+Figure \ref{dfd} shows the main flow of the program. As you can see, most of the code will be written to perform the generation of the question, as this is the most complex part.
+\section{Datastructures}
+	\algrenewcommand\algorithmicprocedure{\textbf{Class}}
+	\algblock[public]{public}{endpublic}
+	\algblock[private]{private}{endprivate}
+	\begin{algorithm}[h]\label{randomised}
+	\caption{Randomised}
+	\begin{algorithmic}[1]
+		\Procedure{Randomised}{}
+			\public
+			\State \textbf{Function} format
+			\State \textbf{Function} get\_answer
+			\State \textbf{Function} get\_item
+			\State \textbf{Function} get\_question\_class 
+			\endpublic
+			\private
+			\State Question\_class : Class
+			\endprivate
+		\EndProcedure
+	\end{algorithmic}
+	\end{algorithm}
+\begin{algorithm}[h]\label{randomisedps}
+	\caption{Randomised Pseudocode}
+	\begin{algorithmic}[1]
+		\Procedure{Randomised}{}
+		\Function {init} {self}
+			\State self.args $\gets$ []
+			\State self.question $\gets$ None
+		\EndFunction
+		\Function {format} {string}
+			\State formatter $\gets$ new RandomisedFormatter
+			\State formatter.format(this object, string)
+		\EndFunction
+		\Function {getItem}{self, name}
+			\State return RandomizedFormatter(name, self.args)
+		\EndFunction
+		\Function {getAnswer}{self}
+			\If {self.args['equation'] = 'findtheta'}
+			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
+			\EndIf
+			\If {self.args['equation'] = 'findmaxheight'}
+			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
+			\EndIf
+			\If {self.args['equation'] = 'findxdistance'}
+			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
+			\EndIf
+			\If {self.args['equation'] = 'findradioactive'}
+			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
+			\EndIf
+			\If {self.args['equation'] = 'findtheta'}
+			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
+			\EndIf
+			\If {self.args['equation'] = 'findtheta'}
+			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
+			\EndIf
+		\EndFunction
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}[h]\label{randomisedFormatter}
+	\caption{RandomisedFormatter}
+	\begin{algorithmic}[1]
+		\Procedure{RandomisedFormatter}{}
+		\public
+		\State \textbf{Function} format
+		\State \textbf{Function} get\_name
+		\State \textbf{Function} get\_args
+		\endpublic
+		\private
+		\State name : String
+		\State args : String Array
+		\endprivate
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}[h]
+\label{randomformatterps}
+\caption{RandomisedFormatter Pseudocode}
+	\begin{algorithmic}[1]
+		\State testing
+	\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}[h]\label{ProjectileQuestion}
+	\caption{ProjectileQuestion}
+	\begin{algorithmic}[1]
+		\Procedure{ProjectileQuestion}{}
+		\public
+		\State \textbf{Function} calculateProjectile
+		\State \textbf{Function} findTheta
+		\State \textbf{Function} findXdistance
+		\State \textbf{Function} findMaxHeight
+		\State \textbf{Function} calculatePoint
+		\State \textbf{Function} getTheta
+		\State \textbf{Function} getXdistance
+		\State \textbf{Function} getMaxHeight
+		\endpublic
+		\private
+		\State theta : Integer
+		\State xdistance : Float
+		\State maxHeight : Float
+		\endprivate
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}[h]\label{RadioactiveQuestion}
+	\caption{RadioactiveQuestion}
+	\begin{algorithmic}[1]
+		\Procedure{RadioactiveQuestion}{}
+		\public
+		\State \textbf{Function} calculateDecay
+		\State \textbf{Function} findDecayConstant
+		\State \textbf{Function} findHalfLife
+		\State \textbf{Function} findActivity
+		\State \textbf{Function} findParticles
+		\State \textbf{Function} getDecayConstant
+		\State \textbf{Function} getHalfLife
+		\State \textbf{Function} getActivity
+		\State \textbf{Function} getParticles
+		\endpublic
+		\private
+		\State decayConstant : Float
+		\State halfLife : Float
+		\State activity : Integer
+		\State particles : Integer
+		\endprivate
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+\clearpage
+\subsection{Justification}
+In Algorithm \ref{ProjectileQuestion} and \ref{RadioactiveQuestion} you can see that the Function names are similar, with there being a find function and a get function for each variable. This is because the find function is used to generate the question and answer, and the get function is used to return the variable. The get function is needed to allow the question to be formatted with data required to answer it.
+
+Classes \texttt{Randomised} and \texttt{RandomisedFormatter} found in Algorithms \ref{randomised} and \ref{randomisedFormatter} respectively, were created using classes as this was required to extend the inbuilt Python string formatter. By default, \texttt{str.format()} replaces fields delimited by braces\autocite{pystr}.
+\begin{figure}[h]
+	\centering
+	\texttt{>>> "The sum of 1 + 2 is {0}".format(1+2)}\\
+	\texttt{'The sum of 1 + 2 is 3'}
+	\caption{Default behaviour of Python's \texttt{str.format()}\autocite{pystr}}
+\end{figure}
+\\
+The \texttt{RandomisedFormatter} Class extends this functionality, by allowing custom arguments to be specified in the brace delimiter, instead of just a keyword argument, or an index argument. 
+\begin{figure}[h]
+	\label{exformat}
+	\centering
+	\texttt{A ball is projected with speed \{a:random:20:40\}. At the starting point the ball is \{b:random:5:30\}m of the ground. The highest point of the ball is \{equation:type:findtheta\}}
+	\caption{Example string for extended string formatter}
+\end{figure}
+\\
+The syntax in Figure \ref{exformat} allows an operand to be specified, and an operator. If necessary, further arguments provided for example a range of values. In the string argument \texttt{\{a:random:20:40\}} \texttt{a} is the operand, and this is the name of the variable in which the random number will be stored. \texttt{random} specifies the operation to be performed, in this case generate a random number. Finally \texttt{20:40} specifies the range for the random number generation.
+
+The \texttt{\{equation:type:findtheta\}} is less complex, and just allows the equation type to be associated with the string, so the program knows what calculations to perform.
+\section{Algorithms}
+N.B In all of these algorithms the classes defined in Section 2.3 will be referenced.
+\iffalse\begin{algorithm}[h]
+	\caption{Question plot class}
+	\begin{algorithmic}
+		\Procedure {Projectile Question} {}
+			\Function {init} {self, yOffset, initialSpeed, theta}
+				\State self.yOffset $\gets$ yOffset
+				\State self.initalSpeed $\gets$ initalSpeed
+				\State self.theta $\gets$ theta
+			\EndFunction
+			\Function {calculateProjectile} {self}
+				\State increment $\gets$ 0.001
+				\State theta $\gets$ radians(theta)
+				\State xSpeed $\gets$ self.initialSpeed $\times$ cos(theta)
+				\State ySpeed $\gets$ self.initialSpeed $\times$ sin(theta)
+				\State time $\gets$ 0
+				\State time += increment
+				\State self.xPosArray
+				\State self.yPosArray
+				\State yPosTemp $\gets$ 5
+				\While {yPosTemp $>$ 0}
+					\State xPosTemp $\gets$ xSpeed $\times$ time
+					\State yPosTemp $\gets$ (ySpeed $\times$ time) + ($\frac{1}{2} \times -9.8 \times \text{time}^2$) + self.yOffset
+					\State yPosArray.append(xPosTemp)
+				\EndWhile
+			\EndFunction
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[h]\label{questiongeneration}
+	\caption{Question Generation}
+	\begin{algorithmic}[1]
+		\State baseQuestionArray $\gets$ readLines(basequestions.txt)
+		\State baseQuestion \(\gets\) randomChoice(baseQuestionArray)
+		\State randomisedInstance $\gets$ Randomised()
+		\State randomisedInstance.format(baseQuestion)
+		\If {randomisedInstance.args['equation'] == 'findtheta}
+		\State ProjectileQuestion.FindTheta()
+		\EndIf
+		\If {randomisedInstance.args['equation'] == 'findxdistance'}
+		\State ProjectileQuestion.findXdistance()
+		\EndIf
+		\If {randomisedInstance.args['equation'] == 'findmaxheight'}
+		\State ProjectileQuestion.findMaxHeight()
+		\EndIf
+		\If {randomisedInstance.args['equation'] == 'findparticles'}
+		\State RadioactiveQuestion.findParticles()
+		\EndIf
+		\If {randomisedInstance.args['equation'] == 'finddecayconstant'}
+		\State RadioactiveQuestion.findDecayConstant()
+		\EndIf
+		\If {randomisedInstance.args['equation'] == 'findhalflife'}
+		\State RadioactiveQuestion.findHalflife()
+		\EndIf
+	\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}[h]\label{}
+	\caption{Question Generation}
+	\begin{algorithmic}[1]
+		\State lol
+	\end{algorithmic}
+\end{algorithm}
+\fi
+\begin{algorithm}[h]
+	\caption{Load Question}
+	\begin{algorithmic}
+		\State topic $\gets$ User input
+		\If {topic = "projectilemotion"}
+			\State fileText $\gets$ fileLoad(projectilemotion.txt)
+		\EndIf
+		\If {topic = "radioactivedecay"}
+			\State fileText $\gets$ fileLoad(radioactivedecay.txt)
+		\EndIf
+			
+	\end{algorithmic}
+\end{algorithm}
