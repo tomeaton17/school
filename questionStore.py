@@ -14,7 +14,7 @@ class Randomized(object):
     def format(self, s):
         return string.Formatter().vformat(s, args=(), kwargs=self)
 
-    def get_answer(self):
+    def get_class(self):
         if(self.args['equation'] ==  "findtheta"):
             self.question = questionplotclass.ProjectileQuestion(self.args['b'], self.args['a'], random.randint(40, 60))
             self.question.find_theta()
@@ -55,4 +55,4 @@ def load(questionType, object):
 if __name__ == '__main__':
     rr = Randomized()
     load("projectilemotionquestions", rr)
-    print(rr.get_answer())
+    print(rr.get_class())

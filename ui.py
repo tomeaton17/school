@@ -80,7 +80,7 @@ class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
     def generate_question(self):
         string = str(questionStore.load("projectilemotionquestions", self.randomised))
         temp = self.randomised.format(string)
-        temporary_object = self.randomised.get_answer()
+        temporary_object = self.randomised.get_class()
         if (self.randomised.args['equation'] == 'findtheta'):
             temp = str(temp) + str(temporary_object.answer_max_height()) + " Find theta in degreees."
             self.answer = temporary_object.answer_theta()

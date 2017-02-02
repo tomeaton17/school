@@ -79,6 +79,7 @@ Figure \ref{dfd} shows the main flow of the program. As you can see, most of the
 		\EndProcedure
 	\end{algorithmic}
 	\end{algorithm}
+This is the Class definition for the Randomised class. It is used to format a question, so that it can be asked to the user.
 \begin{algorithm}[h]\label{randomisedps}
 	\caption{Randomised Pseudocode}
 	\begin{algorithmic}[1]
@@ -99,24 +100,26 @@ Figure \ref{dfd} shows the main flow of the program. As you can see, most of the
 			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
 			\EndIf
 			\If {self.args['equation'] = 'findmaxheight'}
-			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
+			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c']))
 			\EndIf
 			\If {self.args['equation'] = 'findxdistance'}
 			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
 			\EndIf
 			\If {self.args['equation'] = 'findradioactive'}
-			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
+			\State self.question $\gets$ RadioactiveQuestion(self.args['a'], self.args['b'], self.args['c]))
 			\EndIf
-			\If {self.args['equation'] = 'findtheta'}
-			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
+			\If {self.args['equation'] = 'findDecayConstant'}
+			\State self.question $\gets$ RadioactiveQuestion(self.args['a'], self.args['b'], self.args['c]))
 			\EndIf
-			\If {self.args['equation'] = 'findtheta'}
-			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
+			\If {self.args['equation'] = 'findParticles'}
+			\State self.question $\gets$ RadioactiveQuestion(self.args['a'], self.args['b'], self.args['c]))
 			\EndIf
 		\EndFunction
 		\EndProcedure
 	\end{algorithmic}
 \end{algorithm}
+\clearpage
+This is the main pseudocode for the Randomised class. It calls the \texttt{RandomisedFormatter} class to actually format the text, and the \texttt{getAnswer} function is used to get the answer to the question so that the users answer can be checked.
 \begin{algorithm}[h]\label{randomisedFormatter}
 	\caption{RandomisedFormatter}
 	\begin{algorithmic}[1]
@@ -298,5 +301,32 @@ The \texttt{RandomisedFormatter} Class extends this functionality, by allowing c
 The syntax in Figure \ref{exformat} allows an operand to be specified, and an operator. If necessary, further arguments provided for example a range of values. In the string argument \texttt{\{a:random:20:40\}} \texttt{a} is the operand, and this is the name of the variable in which the random number will be stored. \texttt{random} specifies the operation to be performed, in this case generate a random number. Finally \texttt{20:40} specifies the range for the random number generation.
 
 The \texttt{\{equation:type:findtheta\}} is less complex, and just allows the equation type to be associated with the string, so the program knows what calculations to perform.
+\clearpage
 \section{Algorithms}
 N.B In all of these algorithms the classes defined in Section 2.3 will be referenced.
+\begin{algorithm}
+	\label{mainps}
+	\caption{Main Algorithm}
+	\begin{algorithmic}[1]
+		\State Display MainMenu
+		\If {Projectile topic button pressed}
+			\State new ProjectileQuestion
+			\State loadQuestion from projectile.txt
+			\State ProjectileQuestion(loadQuestion)
+		\EndIf
+		\If {Radioactive decay pressed}
+			\State Display RadioactiveQuestion
+			\State loadQuestion from radioactive.txt
+			\State RadioactiveQuestion(loadQuestion)
+		\EndIf
+		\If {Close button pressed}
+			\State Display PromptBox("Are you sure about that"?)
+			\If{Answer = True}
+				\State Close application
+			
+			\Else
+				\State Go to MainMenu
+			\EndIf
+		\EndIf
+	\end{algorithmic}
+\end{algorithm}
