@@ -19,8 +19,8 @@ To be able to generate the questions randomly on the fly, a bare question struct
 Matplotlib will be used to generate the graph as discussed earlier. It will require an equation to be able to do this. The equation could be stored in the question in the text file, but it would be easier to just store the question type in the text file. You could then code specific equations depending on the question type. This will prevent the text file from getting too long and hard to read. It will also improve runtime performance, as it will be a shorter and less complex string to parse. The graph will be generated as an image.
 \subsection{Display of GUI}
 The display of the GUI will take the generated question, and the image of the graph and collate them to show the GUI. Apart from this, the GUI needs to be able to take a user answer, and check if it is correct. It will need to provide buttons to select a topic, submit an answer and skip a question.
-\section{Diagrams}
-\begin{figure}[h]
+\section{Dataflow diagrams}
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}[node distance = 2cm]
 	\node [system] (system)at (0, 0) {System};
@@ -28,9 +28,9 @@ The display of the GUI will take the generated question, and the image of the gr
 	\draw [->, transform canvas={yshift=1em}] (student) -- node[anchor=south] {Answer} (system) [yshift=1em];
 	\draw [<-, transform canvas={yshift=-1em}] (student.west) -- node[anchor=south] {Question} (system) [yshift=1em];
 \end{tikzpicture}
-\caption{Context Diagram}
+\caption{Level 0 Dataflow Diagram}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}
 	\node [entity] (student1) {Student};
@@ -59,68 +59,132 @@ The display of the GUI will take the generated question, and the image of the gr
 \label{dfd}
 \end{figure}
 Figure \ref{dfd} shows the main flow of the program. As you can see, most of the code will be written to perform the generation of the question, as this is the most complex part.
+
+\section{Algorithms}
+N.B In all of these algorithms the classes defined in Section 2.5 will be referenced.
+\begin{algorithm}
+	\label{mainps}
+	\caption{Main Algorithm}
+	\begin{algorithmic}[1]
+		\State Display MainMenu
+		\If {Projectile topic button pressed}
+			\State new ProjectileQuestion
+			\State loadQuestion from projectile.txt
+			\State ProjectileQuestion(loadQuestion)
+			\If{RadioactiveQuestion.answer = student answer}
+			\State print "You got it right"
+			\State ProjectileQuestion(loadQuestion)
+			\Else
+			\State print "You got it wrong"
+			\State ask "Would you like to see the answer"
+			\If {yes}
+			\State print ProjectileQuestion.answer
+			\State RadioactiveQuestion(loadQuestion)
+			\Else
+			\State return to function
+			\EndIf
+			\EndIf
+		\EndIf
+		\If {Radioactive decay pressed}
+			\State Display RadioactiveQuestion
+			\State loadQuestion from radioactive.txt
+			\State RadioactiveQuestion(loadQuestion)
+		\EndIf
+		\If {Close button pressed}
+			\State Display PromptBox("Are you sure about that"?)
+			\If{Answer = True}
+				\State Close application
+			
+			\Else
+				\State Go to MainMenu
+			\EndIf
+		\EndIf
+	\end{algorithmic}
+\end{algorithm}
+\subsection{Justification}
+This is a simple overview of how the program will run. The only point of interest in this is the fact that when a user gets the question wrong, they are asked whether they would like to see the answer or try again. This was used to prevent infuriation if the student cannot get the answer, but to also allow students to try again if they think they are close to the answer. 
+
+The main algorithm forms a complete solution as it covers all of the input that the user could give, for example wanting to retry the question or to see the answer.
+\subsubsection{Algorithm run order}
+The order that this algorithm will run will depend on the run time of each algorithm. For example, the diagram generation may take a long time to execute, so it may be beneficial to generate questions in advance, so that the user does not have to wait a long time when switching question. 
+
+Ignoring this, the run order will be this:
+\begin{enumerate}
+	\item Let the user choose the topic.
+	\item Generate the question and graph for that topic.
+	\item Get the student's answer and check against real answer.
+	\item If correct go back to step 2
+	\item If incorrect ask user if they want to skip question or try again.
+\end{enumerate} 
+
+
+\section{Usability Features}
+Usability features are an important part of this programs success. As the tasks that this program does could be done elsewhere, albeit at the cost of more effort, it is important that the program is as easy to use a possible. This can be resolved by adding key usability features.
+
+The main usability feature is the easy to use GUI. It only has the essential functions, which may mean a small reduction in productivity. However, the GUI will be much more intuitive, and will lead to a more simple experience overall. This is crucial, as ease of use is the main reason that this is a problem.
+
+The feedback on student's answers is another usability feature. If the student gets the answer wrong, they have the choice to either try again, or to see the answer and move onto the next question. The program could just not let you move on if you don't get the right answer, but this could lead to annoyance if they are stuck on a question.
+
 \section{Datastructures}
-	\algrenewcommand\algorithmicprocedure{\textbf{Class}}
-	\algblock[public]{public}{endpublic}
-	\algblock[private]{private}{endprivate}
-	\begin{algorithm}[h]\label{randomised}
+\subsection{Classes}
+\algrenewcommand\algorithmicprocedure{\textbf{Class}}
+\algblock[public]{public}{endpublic}
+\algblock[private]{private}{endprivate}
+\begin{algorithm}[H]\label{randomised}
 	\caption{Randomised}
 	\begin{algorithmic}[1]
 		\Procedure{Randomised}{}
-			\public
-			\State \textbf{Function} format
-			\State \textbf{Function} get\_answer
-			\State \textbf{Function} get\_item
-			\State \textbf{Function} get\_question\_class 
-			\endpublic
-			\private
-			\State Question\_class : Class
-			\endprivate
+		\public
+		\State \textbf{Function} format
+		\State \textbf{Function} get\_class
+		\State \textbf{Function} get\_item
+		\State \textbf{Function} get\_question\_class 
+		\endpublic
+		\private
+		\State Question\_class : Class
+		\endprivate
 		\EndProcedure
 	\end{algorithmic}
-	\end{algorithm}
-This is the Class definition for the Randomised class. It is used to format a question, so that it can be asked to the user.
-\begin{algorithm}[h]\label{randomisedps}
+\end{algorithm}
+\begin{algorithm}[H]\label{randomisedps}
 	\caption{Randomised Pseudocode}
 	\begin{algorithmic}[1]
 		\Procedure{Randomised}{}
 		\Function {init} {self}
-			\State self.args $\gets$ []
-			\State self.question $\gets$ None
+		\State self.args $\gets$ []
+		\State self.question $\gets$ None
 		\EndFunction
 		\Function {format} {string}
-			\State formatter $\gets$ new RandomisedFormatter
-			\State formatter.format(this object, string)
+		\State formatter $\gets$ new RandomisedFormatter
+		\State formatter.format(this object, string)
 		\EndFunction
 		\Function {getItem}{self, name}
-			\State return RandomizedFormatter(name, self.args)
+		\State return RandomizedFormatter(name, self.args)
 		\EndFunction
-		\Function {getAnswer}{self}
-			\If {self.args['equation'] = 'findtheta'}
-			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
-			\EndIf
-			\If {self.args['equation'] = 'findmaxheight'}
-			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c']))
-			\EndIf
-			\If {self.args['equation'] = 'findxdistance'}
-			\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
-			\EndIf
-			\If {self.args['equation'] = 'findradioactive'}
-			\State self.question $\gets$ RadioactiveQuestion(self.args['a'], self.args['b'], self.args['c]))
-			\EndIf
-			\If {self.args['equation'] = 'findDecayConstant'}
-			\State self.question $\gets$ RadioactiveQuestion(self.args['a'], self.args['b'], self.args['c]))
-			\EndIf
-			\If {self.args['equation'] = 'findParticles'}
-			\State self.question $\gets$ RadioactiveQuestion(self.args['a'], self.args['b'], self.args['c]))
-			\EndIf
+		\Function {getClass}{self}
+		\If {self.args['equation'] = 'findtheta'}
+		\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
+		\EndIf
+		\If {self.args['equation'] = 'findmaxheight'}
+		\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c']))
+		\EndIf
+		\If {self.args['equation'] = 'findxdistance'}
+		\State self.question $\gets$ ProjectileQuestion(self.args['a'], self.args['b'], self.args['c]))
+		\EndIf
+		\If {self.args['equation'] = 'findradioactive'}
+		\State self.question $\gets$ RadioactiveQuestion(self.args['a'], self.args['b'], self.args['c]))
+		\EndIf
+		\If {self.args['equation'] = 'findDecayConstant'}
+		\State self.question $\gets$ RadioactiveQuestion(self.args['a'], self.args['b'], self.args['c]))
+		\EndIf
+		\If {self.args['equation'] = 'findParticles'}
+		\State self.question $\gets$ RadioactiveQuestion(self.args['a'], self.args['b'], self.args['c]))
+		\EndIf
 		\EndFunction
 		\EndProcedure
 	\end{algorithmic}
 \end{algorithm}
-\clearpage
-This is the main pseudocode for the Randomised class. It calls the \texttt{RandomisedFormatter} class to actually format the text, and the \texttt{getAnswer} function is used to get the answer to the question so that the users answer can be checked.
-\begin{algorithm}[h]\label{randomisedFormatter}
+\begin{algorithm}[H]\label{randomisedFormatter}
 	\caption{RandomisedFormatter}
 	\begin{algorithmic}[1]
 		\Procedure{RandomisedFormatter}{}
@@ -136,9 +200,9 @@ This is the main pseudocode for the Randomised class. It calls the \texttt{Rando
 		\EndProcedure
 	\end{algorithmic}
 \end{algorithm}
-\begin{algorithm}[h]
-\label{randomformatterps}
-\caption{RandomisedFormatter Pseudocode}
+\begin{algorithm}[H]
+	\label{randomformatterps}
+	\caption{RandomisedFormatter Pseudocode}
 	\begin{algorithmic}[1]
 		\Procedure{RandomisedFormatter}{}
 		\Function {init} {self, name, args}
@@ -161,7 +225,7 @@ This is the main pseudocode for the Randomised class. It calls the \texttt{Rando
 		\EndProcedure
 	\end{algorithmic}
 \end{algorithm}
-\begin{algorithm}[h]\label{ProjectileQuestion}
+\begin{algorithm}[H]\label{ProjectileQuestion}
 	\caption{ProjectileQuestion}
 	\begin{algorithmic}[1]
 		\Procedure{ProjectileQuestion}{}
@@ -183,78 +247,78 @@ This is the main pseudocode for the Randomised class. It calls the \texttt{Rando
 		\EndProcedure
 	\end{algorithmic}
 \end{algorithm}
-\begin{algorithm}[h]
-\label{projectilequestionps}
-\caption{ProjectileQuestion Pseudocode}
-\begin{algorithmic}[1]
-	\Procedure{ProjectileQuestion} {}
-	\Function {init}{self, yOffset, initialSpeed, theta}
-	\State self.yOffset $\gets$ yOffset
-	\State self.initalSpeed $\gets$ initialSpeed
-	\State self.theta $\gets$ theta
-	\EndFunction
-	\Function {calculateProjectile}{}
-	\State increment $\gets$ 0.01
-	\State theta $\gets$ radians(theta)
-	\State xSpeed $\gets$ self.initialSpeed * cos(theta)
-	\State ySpeed $\gets$ self.initialSpeed * sin(theta)
-	\State time $\gets$ 0
-	\State time $\gets$ time + increment
-	\State self.xPosArray $\gets$ []
-	\State self.yPosArray $\gets$ []
-	\State yPosTemp $\gets$ 5 \Comment To satisfy \texttt{while} loop during first run
-	\While {yPosTemp > 0}
+\begin{algorithm}[H]
+	\label{projectilequestionps}
+	\caption{ProjectileQuestion Pseudocode}
+	\begin{algorithmic}[1]
+		\Procedure{ProjectileQuestion} {}
+		\Function {init}{self, yOffset, initialSpeed, theta}
+		\State self.yOffset $\gets$ yOffset
+		\State self.initalSpeed $\gets$ initialSpeed
+		\State self.theta $\gets$ theta
+		\EndFunction
+		\Function {calculateProjectile}{}
+		\State increment $\gets$ 0.01
+		\State theta $\gets$ radians(theta)
+		\State xSpeed $\gets$ self.initialSpeed * cos(theta)
+		\State ySpeed $\gets$ self.initialSpeed * sin(theta)
+		\State time $\gets$ 0
+		\State time $\gets$ time + increment
+		\State self.xPosArray $\gets$ []
+		\State self.yPosArray $\gets$ []
+		\State yPosTemp $\gets$ 5 \Comment To satisfy \texttt{while} loop during first run
+		\While {yPosTemp > 0}
 		\State xPosTemp $\gets$ xSpeed $\times$ time
 		\State yPosTemp $\gets$ (ySpeed $\times$ time) + (0.5 * -9.8 * $\textrm{time}^2$ + self.yOffset) 
 		\State xPosArray.append(xPosTemp)
 		\State yPosArray.append(yPosTemp)
 		\State time $\gets$ time + increment
-	\EndWhile
-	\EndFunction
-	\Function {findTheta}{}
-	\State self.calculateProjectile()
-	\State plotAsImg(thetaDiagram, self.xPosArray, self.yPosArray, graph.png)
-	\State resize(graph.png, 0.5)
-	\State save(graph.png)
-	\EndFunction
-	\Function {findXDistance}{}
-	\State self.calculateProjectile()
-	\State plotAsImg(xDistanceDiagram, self.xPosArray, self.yPosArray, graph.png)
-	\State resize(graph.png, 0.5)
-	\State save(graph.png)
-	\EndFunction
-	\Function {findMaxHeight}{}
-	\State self.calculateProjectile()
-	\State plotAsImg(maxHeightDiagram, self.xPosArray, self.yPosArray, graph.png)
-	\State resize(graph.png, 0.5)
-	\State save(graph.png)
-	\EndFunction
-	\algstore{pqps}
-	
-\end{algorithmic}
+		\EndWhile
+		\EndFunction
+		\Function {findTheta}{}
+		\State self.calculateProjectile()
+		\State plotAsImg(thetaDiagram, self.xPosArray, self.yPosArray, graph.png)
+		\State resize(graph.png, 0.5)
+		\State save(graph.png)
+		\EndFunction
+		\Function {findXDistance}{}
+		\State self.calculateProjectile()
+		\State plotAsImg(xDistanceDiagram, self.xPosArray, self.yPosArray, graph.png)
+		\State resize(graph.png, 0.5)
+		\State save(graph.png)
+		\EndFunction
+		\Function {findMaxHeight}{}
+		\State self.calculateProjectile()
+		\State plotAsImg(maxHeightDiagram, self.xPosArray, self.yPosArray, graph.png)
+		\State resize(graph.png, 0.5)
+		\State save(graph.png)
+		\EndFunction
+		\algstore{pqps}
+		
+	\end{algorithmic}
 \end{algorithm}
 \clearpage
-\begin{algorithm}[h]
-\caption{ProjectileQuestion Pseudocode continued}
-\begin{algorithmic}[1]
-	\algrestore{pqps}
-	\Function {calculatePoint}{startX, startY, angle, length}
-	\State endpoint $\gets$ [startX + (length $\times$ cos(angle)), startY + (length $\times$ sin(angle))]
-	\State return endpoint
-	\EndFunction
-	\Function {answerTheta}{}
-	\State return self.theta
-	\EndFunction 
-	\Function {answerXDistance}{}
-	\State return max(self.xPosArray)
-	\EndFunction
-	\Function {answerMaxHeight}{}
-	\State return max(self.yPosArray)
-	\EndFunction
-	\EndProcedure
-\end{algorithmic}
+\begin{algorithm}[H]
+	\caption{ProjectileQuestion Pseudocode continued}
+	\begin{algorithmic}[1]
+		\algrestore{pqps}
+		\Function {calculatePoint}{startX, startY, angle, length}
+		\State endpoint $\gets$ [startX + (length $\times$ cos(angle)), startY + (length $\times$ sin(angle))]
+		\State return endpoint
+		\EndFunction
+		\Function {answerTheta}{}
+		\State return self.theta
+		\EndFunction 
+		\Function {answerXDistance}{}
+		\State return max(self.xPosArray)
+		\EndFunction
+		\Function {answerMaxHeight}{}
+		\State return max(self.yPosArray)
+		\EndFunction
+		\EndProcedure
+	\end{algorithmic}
 \end{algorithm}
-\begin{algorithm}[h]\label{RadioactiveQuestion}
+\begin{algorithm}[H]\label{RadioactiveQuestion}
 	\caption{RadioactiveQuestion}
 	\begin{algorithmic}[1]
 		\Procedure{RadioactiveQuestion}{}
@@ -279,54 +343,61 @@ This is the main pseudocode for the Randomised class. It calls the \texttt{Rando
 	\end{algorithmic}
 \end{algorithm}
 \clearpage
+\subsection{Variables}
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\multicolumn{3}{|c|}{\textbf{Variables}}\\
+			\hline
+			\textbf{Variable name} & \textbf{Variable type} & \textbf{Comments}\\
+			\hline
+			MainApp & Class & Instance of the main menu class \\
+			\hline
+			temporaryObject & Class & Question generation class
+			 \\
+			\hline
+			answer & Integer / float & Answer to the question \\
+			\hline
+			studentAnswer & Integer / float & Students answer \\
+			\hline
+		\end{tabular}
+	\end{center}
+\subsection {Explanation}
+Algorithm 1 is the class definition for the \texttt{Randomised} class. It is used to call the \texttt{RandomisedFormatter} class in order to format the question string, and also to return the class.
+
+Algorithm 2 is the pseudocode for the \texttt{Randomised}Class. The main bulk of the code is taken up by the getClass Function. This is used to verify
 \subsection{Justification}
 In Algorithm \ref{ProjectileQuestion} and \ref{RadioactiveQuestion} you can see that the Function names are similar, with there being a find function and a get function for each variable. This is because the find function is used to generate the question and answer, and the get function is used to return the variable. The get function is needed to allow the question to be formatted with data required to answer it.
 
 Classes \texttt{Randomised} and \texttt{RandomisedFormatter} found in Algorithms \ref{randomised} and \ref{randomisedFormatter} respectively, were created using classes as this was required to extend the inbuilt Python string formatter. By default, \texttt{str.format()} replaces fields delimited by braces\autocite{pystr}.
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\texttt{>>> "The sum of 1 + 2 is {0}".format(1+2)}\\
 	\texttt{'The sum of 1 + 2 is 3'}
 	\caption{Default behaviour of Python's \texttt{str.format()}\autocite{pystr}}
 \end{figure}
-\\
 The \texttt{RandomisedFormatter} Class extends this functionality, by allowing custom arguments to be specified in the brace delimiter, instead of just a keyword argument, or an index argument. 
-\begin{figure}[h]
+\begin{figure}[H]
 	\label{exformat}
 	\centering
 	\texttt{A ball is projected with speed \{a:random:20:40\}. At the starting point the ball is \{b:random:5:30\}m of the ground. The highest point of the ball is \{equation:type:findtheta\}}
 	\caption{Example string for extended string formatter}
 \end{figure}
-\\
 The syntax in Figure \ref{exformat} allows an operand to be specified, and an operator. If necessary, further arguments provided for example a range of values. In the string argument \texttt{\{a:random:20:40\}} \texttt{a} is the operand, and this is the name of the variable in which the random number will be stored. \texttt{random} specifies the operation to be performed, in this case generate a random number. Finally \texttt{20:40} specifies the range for the random number generation.
 
 The \texttt{\{equation:type:findtheta\}} is less complex, and just allows the equation type to be associated with the string, so the program knows what calculations to perform.
-\clearpage
-\section{Algorithms}
-N.B In all of these algorithms the classes defined in Section 2.3 will be referenced.
-\begin{algorithm}
-	\label{mainps}
-	\caption{Main Algorithm}
-	\begin{algorithmic}[1]
-		\State Display MainMenu
-		\If {Projectile topic button pressed}
-			\State new ProjectileQuestion
-			\State loadQuestion from projectile.txt
-			\State ProjectileQuestion(loadQuestion)
-		\EndIf
-		\If {Radioactive decay pressed}
-			\State Display RadioactiveQuestion
-			\State loadQuestion from radioactive.txt
-			\State RadioactiveQuestion(loadQuestion)
-		\EndIf
-		\If {Close button pressed}
-			\State Display PromptBox("Are you sure about that"?)
-			\If{Answer = True}
-				\State Close application
-			
-			\Else
-				\State Go to MainMenu
-			\EndIf
-		\EndIf
-	\end{algorithmic}
-\end{algorithm}
+
+\subsubsection{Variables}
+The variables shown in this section are the main variables that will be used. There are many other variables, but these are mostly covered in the class definitions so are not not worthy. The temporary object is probably the most important variable. This is because as the question generation is random, you need to keep track of the random variables so that you can get an answer from it. This solves the problem by allowing constant access to the class which was instantiated with the random variables, so that you can call methods on that class to get the answer and other things. The \texttt{studentAnswer} and \texttt{answer} are also important, so that the students answer can be verified.
+\subsection{Validation}
+The only variable that will require validation is \texttt{studentAnswer}. This is because it is user input. The variable will need to be checked that it only contains numbers only. Spaces won't have to be stripped from the variable, as this is automatically done by Python.
+\section{Test data}
+Test data will be important in determining the order in which the algorithms run, as it is critical that the questions don't take too long to display. The areas to be tested will be shown below.
+\begin{itemize}
+	\item Time to generate question
+	\item Time to display graph/diagram
+	\item Generation of variables within question are in specified range
+	\item Graph has a reasonable scale so that the information is easy to read
+	\item Graph image is high enough resolution to be seen clearly
+\end{itemize}
+The time to generate question and display graph are being tested so that changes to the algorithm order can be made if necessary. If it takes too long to generate the question, then this will no longer be done at runtime, so that the user doesn’t have to wait for the question to be generated. Checking that the variables are within a reasonable range is done so that the questions are realistic. For example it would not be realistic for a sample of material to have 12 atoms in it. Checking that the graph has reasonable axis is done so that the graph is easy to read, and fits well into the space. It would not be helpful if only a small part of the graph is being shown, and neither would it be helpful if too much of the graph was shown. The right amount of graph to show will be refined during user testing. Testing that the graph image is high enough resolution is done partly to make sure that the image can be seen clearly on the GUI, but it also links back to the time to display graph. If the image resolution is greater, then it will take longer to create, but will be easier to see. During testing I will have to find a balance point between resolution and time to create.
