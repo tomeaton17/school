@@ -27,4 +27,30 @@
   url = {https://en.wikipedia.org/w/index.php?title=Qt_(software)&oldid=759833448},
 }
 
+@Online{pystr,
+  author  = {Python Software Foundation},
+  title   = {Built in types - Sequence types - String formatting},
+  url     = {https://docs.python.org/2/library/stdtypes.html#str.format},
+  urldate = {2017-01-18},
+}
+
+@Online{pyre,
+  author  = {Python Software Foundation},
+  title   = {re - Regular expressions operations},
+  url     = {https://docs.python.org/3/library/re.html},
+  urldate = {2017-02-10},
+}
+
+@Online{pep3101,
+  author = {Talin},
+  title  = {PEP 3101 - Advanced string formatting},
+  url    = {https://www.python.org/dev/peps/pep-3101/},
+}
+
+@Online{mpl,
+  author = {Matplotlib development team},
+  title  = {Matplotlib 2.0 Documentation},
+  url    = {http://matplotlib.org/contents.html},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

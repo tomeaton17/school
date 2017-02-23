@@ -13,11 +13,38 @@ The whole project can be broken down into three parts
 	\item Generation of graph / diagram.
 	\item Display of GUI.
 \end{itemize}
+These subsections can then be broken down even further.
 \subsection{Generation of question}
+This can be broken down to:
+\begin{itemize}
+	\item Loading question store from text file
+	\item Finding what the question type is
+	\item Generating random variables based on parameters in question
+	\item Adding random variables to question string
+\end{itemize}
 To be able to generate the questions randomly on the fly, a bare question structure must be implemented. To create this question structure, questions found in Figure \ref{fig:mb} for example, are analysed to find the variables that are important to the question. These are highlighted in Figure \ref{expm} as the lettered variables. Once these variables are found, the question is written in a text file in a way that the variables can be formatted to what is required.
-\subsection{Generation of graph / diagram} 
+\subsection{Generation of graph / diagram}
+This can be broken down to:
+\begin{itemize}
+	\item Getting random variables from question generator
+	\item Getting question type from question generator
+	\item Generating data needed to draw graph
+	\item Drawing the graph
+	\item Converting the graph to an image and storing it
+\end{itemize} 
 Matplotlib will be used to generate the graph as discussed earlier. It will require an equation to be able to do this. The equation could be stored in the question in the text file, but it would be easier to just store the question type in the text file. You could then code specific equations depending on the question type. This will prevent the text file from getting too long and hard to read. It will also improve runtime performance, as it will be a shorter and less complex string to parse. The graph will be generated as an image.
 \subsection{Display of GUI}
+This can be broken down to:
+\begin{itemize}
+	\item Displaying main menu
+	\item Allowing the user to choose topics
+	\item Getting question from question generator
+	\item Getting graph from image store
+	\item Displaying question
+	\item Displaying graph
+	\item Taking and verifying user input for answer
+	\item Informing user if they were correct
+\end{itemize}
 The display of the GUI will take the generated question, and the image of the graph and collate them to show the GUI. Apart from this, the GUI needs to be able to take a user answer, and check if it is correct. It will need to provide buttons to select a topic, submit an answer and skip a question.
 \section{Dataflow diagrams}
 \begin{figure}[H]
@@ -267,7 +294,7 @@ The feedback on student's answers is another usability feature. If the student g
 		\State self.xPosArray $\gets$ []
 		\State self.yPosArray $\gets$ []
 		\State yPosTemp $\gets$ 5 \Comment To satisfy \texttt{while} loop during first run
-		\While {yPosTemp > 0}
+		\While {yPosTemp $>$ 0}
 		\State xPosTemp $\gets$ xSpeed $\times$ time
 		\State yPosTemp $\gets$ (ySpeed $\times$ time) + (0.5 * -9.8 * $\textrm{time}^2$ + self.yOffset) 
 		\State xPosArray.append(xPosTemp)
@@ -283,13 +310,13 @@ The feedback on student's answers is another usability feature. If the student g
 		\EndFunction
 		\Function {findXDistance}{}
 		\State self.calculateProjectile()
-		\State plotAsImg(xDistanceDiagram, self.xPosArray, self.yPosArray, graph.png)
+		\State plotAsImg(xDistanceDiagram, graph.png)
 		\State resize(graph.png, 0.5)
 		\State save(graph.png)
 		\EndFunction
 		\Function {findMaxHeight}{}
 		\State self.calculateProjectile()
-		\State plotAsImg(maxHeightDiagram, self.xPosArray, self.yPosArray, graph.png)
+		\State plotAsImg(maxHeightDiagram, graph.png)
 		\State resize(graph.png, 0.5)
 		\State save(graph.png)
 		\EndFunction
@@ -372,7 +399,7 @@ In Algorithm \ref{ProjectileQuestion} and \ref{RadioactiveQuestion} you can see 
 Classes \texttt{Randomised} and \texttt{RandomisedFormatter} found in Algorithms \ref{randomised} and \ref{randomisedFormatter} respectively, were created using classes as this was required to extend the inbuilt Python string formatter. By default, \texttt{str.format()} replaces fields delimited by braces\autocite{pystr}.
 \begin{figure}[H]
 	\centering
-	\texttt{>>> "The sum of 1 + 2 is {0}".format(1+2)}\\
+	\texttt{>>> "The sum of 1 + 2 is \{0\}".format(1+2)}\\
 	\texttt{'The sum of 1 + 2 is 3'}
 	\caption{Default behaviour of Python's \texttt{str.format()}\autocite{pystr}}
 \end{figure}

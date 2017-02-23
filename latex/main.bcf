@@ -2120,15 +2120,19 @@
     <bcf:datasource type="file" datatype="bibtex">bib/database.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="2">phet</bcf:citekey>
-    <bcf:citekey order="3">mb</bcf:citekey>
-    <bcf:citekey order="4">scool</bcf:citekey>
-    <bcf:citekey order="5">scool</bcf:citekey>
-    <bcf:citekey order="6">mb</bcf:citekey>
+    <bcf:citekey order="4">phet</bcf:citekey>
+    <bcf:citekey order="5">mb</bcf:citekey>
+    <bcf:citekey order="6">scool</bcf:citekey>
     <bcf:citekey order="7">scool</bcf:citekey>
-    <bcf:citekey order="8">qt</bcf:citekey>
-    <bcf:citekey order="9">pystr</bcf:citekey>
-    <bcf:citekey order="10">pystr</bcf:citekey>
+    <bcf:citekey order="8">mb</bcf:citekey>
+    <bcf:citekey order="9">scool</bcf:citekey>
+    <bcf:citekey order="10">qt</bcf:citekey>
+    <bcf:citekey order="11">pystr</bcf:citekey>
+    <bcf:citekey order="12">pystr</bcf:citekey>
+    <bcf:citekey order="13">pep3101</bcf:citekey>
+    <bcf:citekey order="14">pep3101</bcf:citekey>
+    <bcf:citekey order="15">mpl</bcf:citekey>
+    <bcf:citekey order="16">conda</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="none/global/" type="entry" sortscheme="none" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>

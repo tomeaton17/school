@@ -31,8 +31,8 @@
       \strng{fullhash}{c2e7eab2d76f58b97be4df14d9ac105a}
       \strng{authornamehash}{c2e7eab2d76f58b97be4df14d9ac105a}
       \strng{authorfullhash}{c2e7eab2d76f58b97be4df14d9ac105a}
-      \field{sortinit}{2}
-      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{sortinit}{4}
+      \field{sortinithash}{d221becdd544034cf9082056cd6e6d2d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Projectile motion}
@@ -54,8 +54,8 @@
       \strng{fullhash}{e540dbab7bb884939fd555dd2c0b7a68}
       \strng{authornamehash}{e540dbab7bb884939fd555dd2c0b7a68}
       \strng{authorfullhash}{e540dbab7bb884939fd555dd2c0b7a68}
-      \field{sortinit}{3}
-      \field{sortinithash}{197da6d6c34c6b20ce45c4d4baace5a4}
+      \field{sortinit}{5}
+      \field{sortinithash}{c9df3c9fb8f555dd9201cedc5e343021}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{M2 Projectile motion question bank}
@@ -77,8 +77,8 @@
       \strng{fullhash}{07edfbf91909fe616debf20b4e38e588}
       \strng{authornamehash}{07edfbf91909fe616debf20b4e38e588}
       \strng{authorfullhash}{07edfbf91909fe616debf20b4e38e588}
-      \field{sortinit}{4}
-      \field{sortinithash}{d221becdd544034cf9082056cd6e6d2d}
+      \field{sortinit}{6}
+      \field{sortinithash}{02bbed3ed82f61ae046619460488516d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Exam-style Questions: Radioactive Decay Equations}
@@ -100,8 +100,8 @@
       \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
       \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
       \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
-      \field{sortinit}{8}
-      \field{sortinithash}{2f1b0e69e7617f99664f1cd00bb9603c}
+      \field{sortinit}{1}
+      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Qt (software) --- Wikipedia{,} The Free Encyclopedia}
@@ -125,8 +125,8 @@
       \strng{fullhash}{e916da348163d73c23a44e14dd07cb27}
       \strng{authornamehash}{e916da348163d73c23a44e14dd07cb27}
       \strng{authorfullhash}{e916da348163d73c23a44e14dd07cb27}
-      \field{sortinit}{9}
-      \field{sortinithash}{2999ebab86052e6d71b434385f8b4ed2}
+      \field{sortinit}{1}
+      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Built in types - Sequence types - String formatting}
@@ -136,6 +136,69 @@
       \field{urldateera}{ce}
       \verb{url}
       \verb https://docs.python.org/2/library/stdtypes.html#str.format
+      \endverb
+    \endentry
+    \entry{pep3101}{online}{}
+      \name{author}{1}{}{%
+        {{hash=e0f2716fe48a6e2cce6ccffc0f173a17}{%
+           family={Talin},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{e0f2716fe48a6e2cce6ccffc0f173a17}
+      \strng{fullhash}{e0f2716fe48a6e2cce6ccffc0f173a17}
+      \strng{authornamehash}{e0f2716fe48a6e2cce6ccffc0f173a17}
+      \strng{authorfullhash}{e0f2716fe48a6e2cce6ccffc0f173a17}
+      \field{sortinit}{1}
+      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{PEP 3101 - Advanced string formatting}
+      \verb{url}
+      \verb https://www.python.org/dev/peps/pep-3101/
+      \endverb
+    \endentry
+    \entry{mpl}{online}{}
+      \name{author}{1}{}{%
+        {{hash=88f58c0dc175fc882fcf12efc27fa36c}{%
+           family={team},
+           familyi={t\bibinitperiod},
+           given={Matplotlib},
+           giveni={M\bibinitperiod},
+           prefix={development},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \strng{namehash}{88f58c0dc175fc882fcf12efc27fa36c}
+      \strng{fullhash}{88f58c0dc175fc882fcf12efc27fa36c}
+      \strng{authornamehash}{88f58c0dc175fc882fcf12efc27fa36c}
+      \strng{authorfullhash}{88f58c0dc175fc882fcf12efc27fa36c}
+      \field{sortinit}{1}
+      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Matplotlib 2.0 Documentation}
+      \verb{url}
+      \verb http://matplotlib.org/contents.html
+      \endverb
+    \endentry
+    \entry{conda}{online}{}
+      \name{author}{1}{}{%
+        {{hash=90c0bb417ef7c31e28ea77c68e3192ed}{%
+           family={Analytics},
+           familyi={A\bibinitperiod},
+           given={Continuum},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{90c0bb417ef7c31e28ea77c68e3192ed}
+      \strng{fullhash}{90c0bb417ef7c31e28ea77c68e3192ed}
+      \strng{authornamehash}{90c0bb417ef7c31e28ea77c68e3192ed}
+      \strng{authorfullhash}{90c0bb417ef7c31e28ea77c68e3192ed}
+      \field{sortinit}{1}
+      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Anaconda package list}
+      \verb{url}
+      \verb https://docs.continuum.io/anaconda/pkg-docs
       \endverb
     \endentry
   \endsortlist

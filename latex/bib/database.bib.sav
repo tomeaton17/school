@@ -59,4 +59,10 @@
   url    = {https://docs.continuum.io/anaconda/pkg-docs},
 }
 
+@Online{tkinter,
+  author = {Python Software Foundation},
+  title  = {tkinter - Python interface to Tcl/Tl},
+  url    = {https://docs.python.org/3/library/tkinter.html#module-tkinter},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

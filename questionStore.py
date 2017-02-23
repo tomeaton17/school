@@ -15,20 +15,18 @@ class Randomized(object):
         return string.Formatter().vformat(s, args=(), kwargs=self)
 
     def get_class(self):
-        if(self.args['equation'] ==  "findtheta"):
+        if self.args['equation'] == "findtheta":
             self.question = questionplotclass.ProjectileQuestion(self.args['b'], self.args['a'], random.randint(40, 60))
             self.question.find_theta()
             return self.question
-        if (self.args['equation'] == "findmaxheight"):
+        if self.args['equation'] == "findmaxheight":
             self.question = questionplotclass.ProjectileQuestion(self.args['c'], self.args['a'], self.args['b'])
             self.question.find_max_height()
             return self.question
-        if (self.args['equation'] == 'findxdistance'):
+        if self.args['equation'] == 'findxdistance':
             self.question = questionplotclass.ProjectileQuestion(self.args['c'], self.args['a'], self.args['b'])
             self.question.find_xdistance()
             return self.question
-
-
 
 
 class RandomizedFormatter(object):
@@ -47,6 +45,7 @@ class RandomizedFormatter(object):
             value = random.randint(int(low), int(high))
             self.args[self.name] = value
             return str(value)
+
 
 def load(questionType, object):
     lines = [line.rstrip('\n') for line in open(questionType + ".txt")]
