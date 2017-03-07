@@ -108,4 +108,16 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1.5}Summary}{31}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{32}
+\contentsline {section}{\numberline {3.2}Storing questions}{32}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Graph Generation}{35}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.1}Equations}{35}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.2}Graph drawing}{37}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.3}Question class}{44}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.4}GUI Design}{44}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{References}{46}

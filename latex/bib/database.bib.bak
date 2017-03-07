@@ -53,4 +53,17 @@
   url    = {http://matplotlib.org/contents.html},
 }
 
+@Online{conda,
+  author = {Continuum Analytics},
+  title  = {Anaconda package list},
+  url    = {https://docs.continuum.io/anaconda/pkg-docs},
+}
+
+@Online{graph2,
+  author  = {Openstax CNX},
+  title   = {Motion in two dimensions - Vertical projectile motion},
+  url     = {http://archive.cnx.org/contents/86e923ab-903f-40bb-b207-08bb57768704@1/motion-in-two-dimensions-vertical-projectile-motion},
+  urldate = {2017-02-24},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

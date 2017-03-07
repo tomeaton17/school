@@ -31,8 +31,8 @@
       \strng{fullhash}{c2e7eab2d76f58b97be4df14d9ac105a}
       \strng{authornamehash}{c2e7eab2d76f58b97be4df14d9ac105a}
       \strng{authorfullhash}{c2e7eab2d76f58b97be4df14d9ac105a}
-      \field{sortinit}{4}
-      \field{sortinithash}{d221becdd544034cf9082056cd6e6d2d}
+      \field{sortinit}{5}
+      \field{sortinithash}{c9df3c9fb8f555dd9201cedc5e343021}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Projectile motion}
@@ -54,8 +54,8 @@
       \strng{fullhash}{e540dbab7bb884939fd555dd2c0b7a68}
       \strng{authornamehash}{e540dbab7bb884939fd555dd2c0b7a68}
       \strng{authorfullhash}{e540dbab7bb884939fd555dd2c0b7a68}
-      \field{sortinit}{5}
-      \field{sortinithash}{c9df3c9fb8f555dd9201cedc5e343021}
+      \field{sortinit}{6}
+      \field{sortinithash}{02bbed3ed82f61ae046619460488516d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{M2 Projectile motion question bank}
@@ -77,8 +77,8 @@
       \strng{fullhash}{07edfbf91909fe616debf20b4e38e588}
       \strng{authornamehash}{07edfbf91909fe616debf20b4e38e588}
       \strng{authorfullhash}{07edfbf91909fe616debf20b4e38e588}
-      \field{sortinit}{6}
-      \field{sortinithash}{02bbed3ed82f61ae046619460488516d}
+      \field{sortinit}{7}
+      \field{sortinithash}{6ac7fe70cdec8cba8f65694411ce2532}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Exam-style Questions: Radioactive Decay Equations}
@@ -199,6 +199,56 @@
       \field{title}{Anaconda package list}
       \verb{url}
       \verb https://docs.continuum.io/anaconda/pkg-docs
+      \endverb
+    \endentry
+    \entry{graph2}{online}{}
+      \name{author}{1}{}{%
+        {{hash=e5e4c2320ce2c0636cee0f10b469fe2b}{%
+           family={CNX},
+           familyi={C\bibinitperiod},
+           given={Openstax},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{e5e4c2320ce2c0636cee0f10b469fe2b}
+      \strng{fullhash}{e5e4c2320ce2c0636cee0f10b469fe2b}
+      \strng{authornamehash}{e5e4c2320ce2c0636cee0f10b469fe2b}
+      \strng{authorfullhash}{e5e4c2320ce2c0636cee0f10b469fe2b}
+      \field{sortinit}{1}
+      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Motion in two dimensions - Vertical projectile motion}
+      \field{urlday}{24}
+      \field{urlmonth}{2}
+      \field{urlyear}{2017}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb http://archive.cnx.org/contents/86e923ab-903f-40bb-b207-08bb57768704@1/motion-in-two-dimensions-vertical-projectile-motion
+      \endverb
+    \endentry
+    \entry{latex}{online}{}
+      \name{author}{1}{}{%
+        {{hash=1b34f94afd33d1d451d5aef30c1ba9c3}{%
+           family={Project},
+           familyi={P\bibinitperiod},
+           given={The\bibnamedelima Latex},
+           giveni={T\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{1b34f94afd33d1d451d5aef30c1ba9c3}
+      \strng{fullhash}{1b34f94afd33d1d451d5aef30c1ba9c3}
+      \strng{authornamehash}{1b34f94afd33d1d451d5aef30c1ba9c3}
+      \strng{authorfullhash}{1b34f94afd33d1d451d5aef30c1ba9c3}
+      \field{sortinit}{1}
+      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{An introduction to \LaTeX}
+      \field{urlday}{24}
+      \field{urlmonth}{2}
+      \field{urlyear}{2017}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb http://www.latex-project.org/about/
       \endverb
     \endentry
   \endsortlist
