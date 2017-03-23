@@ -118,6 +118,8 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3.3}Question class}{44}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.4}GUI Design}{44}
+\contentsline {section}{\numberline {3.4}GUI Design}{44}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{46}
+\contentsline {subsection}{\numberline {3.4.1}Porting GUI into Python}{46}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{References}{48}

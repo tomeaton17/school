@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../api/.idea/api.iml" filepath="$PROJECT_DIR$/../api/.idea/api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../hashing/.idea/hashing.iml" filepath="$PROJECT_DIR$/../hashing/.idea/hashing.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../opencv/.idea/opencv.iml" filepath="$PROJECT_DIR$/../opencv/.idea/opencv.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/school.iml" filepath="$PROJECT_DIR$/.idea/school.iml" />
     </modules>
   </component>
