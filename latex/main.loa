@@ -1,20 +1,26 @@
 \defcounter {refsection}{0}\relax 
-\contentsline {algorithm}{\numberline {1}{\ignorespaces Main Algorithm}}{17}
+\contentsline {algorithm}{\numberline {1}{\ignorespaces Main Algorithm}}{19}
 \defcounter {refsection}{0}\relax 
-\contentsline {algorithm}{\numberline {2}{\ignorespaces Randomised}}{19}
+\contentsline {algorithm}{\numberline {2}{\ignorespaces Randomised}}{21}
 \defcounter {refsection}{0}\relax 
-\contentsline {algorithm}{\numberline {3}{\ignorespaces Randomised Pseudocode}}{20}
+\contentsline {algorithm}{\numberline {3}{\ignorespaces Randomised Pseudocode}}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {algorithm}{\numberline {4}{\ignorespaces RandomisedFormatter}}{21}
+\contentsline {algorithm}{\numberline {4}{\ignorespaces RandomisedFormatter}}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {algorithm}{\numberline {5}{\ignorespaces RandomisedFormatter Pseudocode}}{21}
+\contentsline {algorithm}{\numberline {5}{\ignorespaces RandomisedFormatter Pseudocode}}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {algorithm}{\numberline {6}{\ignorespaces ProjectileQuestion}}{22}
+\contentsline {algorithm}{\numberline {6}{\ignorespaces ProjectileQuestion}}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {algorithm}{\numberline {7}{\ignorespaces ProjectileQuestion Pseudocode}}{23}
+\contentsline {algorithm}{\numberline {7}{\ignorespaces ProjectileQuestion Pseudocode}}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {algorithm}{\numberline {8}{\ignorespaces ProjectileQuestion Pseudocode continued}}{24}
+\contentsline {algorithm}{\numberline {8}{\ignorespaces ProjectileQuestion Pseudocode continued}}{26}
 \defcounter {refsection}{0}\relax 
-\contentsline {algorithm}{\numberline {9}{\ignorespaces RadioactiveQuestion}}{24}
+\contentsline {algorithm}{\numberline {9}{\ignorespaces RadioactiveQuestion}}{26}
 \defcounter {refsection}{0}\relax 
-\contentsline {algorithm}{\numberline {10}{\ignorespaces Coordinate list generation}}{36}
+\contentsline {algorithm}{\numberline {10}{\ignorespaces Coordinate list generation}}{38}
+\defcounter {refsection}{0}\relax 
+\contentsline {algorithm}{\numberline {11}{\ignorespaces Rounded answer to same significant figures as user's answer}}{57}
+\defcounter {refsection}{0}\relax 
+\contentsline {algorithm}{\numberline {12}{\ignorespaces Rounding answer to same number of decimal places in user's answer}}{57}
+\defcounter {refsection}{0}\relax 
+\contentsline {algorithm}{\numberline {13}{\ignorespaces Rounding to same significant figures with no d.p}}{57}

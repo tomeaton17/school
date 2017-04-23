@@ -1,0 +1,78 @@
+\chapter{Testing to inform development}
+\section{Testing areas}
+As stated in Section 2.6 of the design, the areas to be tested are
+\begin{itemize}
+	\item Time to generate question
+	\item Time to display graph/diagram
+	\item Generation of variables are in specified range
+	\item Graph has reasonable scale so information is easy to read
+	\item Graph image is high enough resolution to be seen clearly
+\end{itemize}
+\section{Testing tools}
+\subsection{Timing}
+The majority of this chapter will be on the optimisation of code so that its run time is shorter. So how does one measure the run time of a piece of code? The first obvious method is to use a stopwatch, which works for code where there is a visual representation of when the code stops and starts. However this is inaccurate, and for small optimisations the difference in run time will not be noticeable. Luckily the built in Python library \texttt{timeit} can measure the time taken to execute a piece of code.
+\begin{figure}[H]
+	\texttt{import timeit\\
+		print(timeit.timeit("for i in range(1,1000): print(i)", number=1))\\
+		>>> 0.006363171571877327}
+	\caption{Timing code execution using \texttt{timeit}}
+\end{figure}
+\subsection{User review}
+While not a big feature in this section, the reception of the user interface is important, as the users of the program will have useful input on what features to add, and how to change the program to make it better to use.
+\section{Time taken to generate question string}
+To test this, we must add in some statements from the \texttt{time} function. First we create a variable before the code to be executed called \texttt{start}. This variable will be assigned the exact time when the code reaches that point. Then another variable is created after the code that is being timed. This variable is assigned the exact time at that point as well. Now that we have two variables, one with the time before execution and one with the time after execution, we can subtract the initial time from the final time to get the time taken to execute the piece of code. This is done like so
+\begin{lstlisting}[language=Python, caption=Timing code runtime]
+start = timeit.default_timer()
+#Code to be tested
+stop = timeit.default_timer()
+print(stop - start)
+\end{lstlisting}
+When the code which generates the question string is tested, its runtime is much less that 0.1 of a second.
+\insertimage{questiontime}{Recorded runtime of code that generates random question string.}
+The time taken for this is clearly acceptable, and the code cannot be optimized more than this. The area of question preparation that is expected to take the longest amount of time to execute is the graph generation.
+\section{Time taken to generate diagram}
+First, the time taken to generate the graph using the first iteration of the code was tested. 
+\insertimage{graphtimeinit}{Recorded runtime of initial graph generation code}
+Looking at the results above, this is not an acceptable runtime. In the success criteria, it was stated that the questions must be prepared within 1 second, otherwise the user would get bored, and it would make the user interface much more tiresome to use. So some modifications to the code must be made.
+
+A hypothesis was created as to why the runtime was so long, and this was because, as the range of graph got bigger, it meant that more points had to be generated, and therefore it took too long. This was tested by increasing the x distance, so that more points had to be created. The results of this test are shown below.
+\insertimage{hypothesis}{Recorded runtime as x distance is increased}
+From these results it is obvious that as the number of calculations increases, so does the runtime. In order to optimise the code, we must know what the complexity of this algorithm is. To help with this, a graph of run time against number of calculations has been drawn using \texttt{matplotlib}.
+\insertimage{runtimefig}{Runtime as a function of number of calculations}
+From looking at the graph, it shows that this algorithm has a linear relationship between runtime and number of calculations, so in Big-O notation, this could be written as \texttt{O(n)}. Now that we know this, we must find a way to reduce the number of calculations as the x distance gets bigger. The best way of doing this would be to increase the increment between points as the x distance gets bigger. This is because as the x distance gets bigger, the graph will get bigger so the resolution of the graph will become less important. So to save time we can increase the distance between points. The downside of this is that the graph may appear slightly jagged, but \texttt{matplotlib} can smoothly interpolate points to generate a smooth curve that goes through the points.
+
+So the way to fix this is to multiply the increment by a small constant and the x distance. So as the x distance gets bigger, the increment gets bigger, but not by a large amount. The code is changed like so
+\begin{lstlisting}[language=Python, caption=Optimisation change to graph generation]
+increment = 0.001 * 0.1 * self.x_distance
+\end{lstlisting}
+Now the increment will be proportional to the number of calculations, unlike before when it did not change. In theory this should mean that it takes the same amount of time to run no matter the x distance, as it should always be doing the same amount of calculations, but in practice that will not be the case because the scale factor will not be accurate enough for that.
+
+Another collection of runtime tests were done, and a graph was produced to show the difference in runtime between the optimised and non optimised code.
+\insertimage{runtimeoptifig}{Comparison between optimised and non optimised code}
+It is now obvious from this figure that the optimised code has done its job. Now that this code has been optimised, the overall runtime will be tested.
+\section{Overall runtime}
+Now that the two main parts of the question preparation have been optimised, the overall runtime can be tested to see if it is under 1 second, as specified in the success criteria. 
+\begin{figure}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		Runtime (s) & Average runtime (s)       \\
+		
+		1.282348    &  \multirow{5}{*}{1.218165}\\
+		
+		0.972347    &                           \\
+		
+		1.588344    &                           \\
+		
+		1.194223    &                           \\
+	
+		1.053565    &\\
+		\hline       
+	\end{tabular}
+	\caption{Runtimes of \texttt{generate\_question function}}
+\end{figure}
+So the average runtime is 1.218165 seconds. This is above the 1 second stated by the success criteria, but it is not by a big amount, and there is little to be done to the code to optimise it further.
+\section{Diagram clarity}
+During the design of the diagram, the ideal resolution was tested, to find a balance between time taken to create the image and clarity of the image. As the resolution of the image is increased the time to create also increases. So during the development this was tested to find the perfect resolution which balances out the two sides. 
+
+Also the size of the image was important, and it was found in testing that the image was too big to fit on the GUI. The code was changed to accommodate this, by using the \texttt{PIL} Python library to reduce the image size by just under a half.

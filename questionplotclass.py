@@ -67,7 +67,7 @@ class ProjectileQuestion:
         arc = patches.Arc((0, self.y_offset), 10, 10,
                           angle=0, theta1=360, theta2=self.theta, linewidth=1)
         ax.add_patch(arc)
-        print(self.theta)
+        print("Answer:", self.theta)
         plt.savefig('test.png', bbox_inches='tight', pad_inches=0)
         im = Image.open('test.png')
         size = np.asarray(im.size)
@@ -120,7 +120,7 @@ class ProjectileQuestion:
         size.tolist()
         im.thumbnail(size)
         im.save('smaller.png')
-        print(self.answer_xdistance())
+        print("Answer:", self.answer_xdistance())
 
     def find_max_height(self):
         self.calculate_projectile()
@@ -166,7 +166,7 @@ class ProjectileQuestion:
         size.tolist()
         im.thumbnail(size)
         im.save('smaller.png')
-        print(self.answer_max_height())
+        print("Answer:", self.answer_max_height())
 
     @staticmethod
     def calculate_point(start_x, start_y, angle, length):
@@ -182,3 +182,5 @@ class ProjectileQuestion:
     def answer_max_height(self):
         return max(self.y_pos)
 
+if __name__ == "__main__":
+    ProjectileQuestion(12, 20, 40).find_max_height()

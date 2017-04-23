@@ -1,0 +1,40 @@
+\chapter{Testing to inform evaluation}
+\section{Generation of variables}
+As outlined in the design section, checking that the variables are within the specified range is to be tested. This is not too hard to test, as it is just making sure that the Python \texttt{random} function is working correctly. To do this a small piece of code was made 
+\begin{lstlisting}[language=Python, caption=Variable range test]
+for i in range(1, 10000):
+	temp = random.randint(20,40)
+	if( temp < 20 or temp > 40 ):
+		print("Failed")
+\end{lstlisting}
+This code passed, so there is no problem with the range of variable generation.
+\section{Realistic values}
+It is stated in the success criteria that the program should have "realistic values in the question.". To test this I ran the program a few times, and looked at the answers for the questions. While they were in a realistic range, i.e $<$ 150 meters, almost none of them were whole numbers, except for the "find $\theta$" type questions. The "find $\theta$" questions always have whole number answers, as the question is generated around the answer, not the other way round. However with the other two question types, "find max height" and "find x distance", the answer is based on the randomly generated question. This means that the answer can be messy. As the answers are not exact, a system for accepting any answers no matter the significant figures had to be developed.
+\section{Graph generation time}
+This was tested mostly in the previous section, found in Section 4.4. This is an extract of the important data
+\begin{figure}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		Runtime (s) & Average runtime (s)       \\
+		
+		1.282348    &  \multirow{5}{*}{1.218165}\\
+		
+		0.972347    &                           \\
+		
+		1.588344    &                           \\
+		
+		1.194223    &                           \\
+		
+		1.053565    &\\
+		\hline       
+	\end{tabular}
+	\caption{Runtimes of \texttt{generate\_question function}}
+\end{figure}
+showing that the average runtime of the question generation time, was slightly greater than one second.
+\section{Answer verification}
+To test this, answers with many significant figures were tested.
+\insertimage{exampletest}{Significant figures test scenario}
+In the middle right of the image is the submitted answer, to the bottom is the actual answer, and you can see the confirmation box showing that the answer was accepted. 
+
+However there was a scenario where the answer was rejected when it was correct. This happened when the user gave an answer that had a greater number of significant figures than the computer had calculated.

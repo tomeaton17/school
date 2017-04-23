@@ -1,0 +1,74 @@
+\chapter{Evaluation }
+\section{Comparing test data with success criteria}
+The success criteria for this project were outlined in Section 1.10, but will be rewritten here.
+\begin{itemize}
+	\item It should have a functional, easy to use GUI.
+	\item It will have randomly generated questions
+	\item It should have realistic values in the question
+	\item Random question should be shown to the user within a second of page display
+	\item Graph or diagram will be generated in relation to question
+	\item Graph should be displayed within a second
+	\item Student's answers should be verified no matter the amount of significant figures.
+\end{itemize}
+The test data collected in the previous section will now be checked against the success criteria, to see how well the program has met these. Only the non subjective success criteria will be checked in this section.
+\subsection{Randomly generated questions}
+This was tested in Section 5.1. As seen in the test data, the questions were random. This was confirmed by generating 10000 questions, and checking that they were in the correct range as specified in the question skeleton, and also checking that they were suitably random. The generated variables were confirmed to be in the correct range, so this part of the test was passed. 
+
+It is hard to say whether the values produced are absolutely random. This is because of our perception of randomness. A human determines whether a number is random or not based upon the numbers before and after it in a sequence. So if we had the number 5 on its own for example, it would not be considered random. However if we had the sequence "1, 4, 19, 234324, 5432, 5, 394" and we looked at the number 5, this would be perceived as being random, as it has no obvious relation to the other numbers in the sequence. So from looking at the test data, each individual number has no obvious relation to another in the sequence, so the number generation can be classified as random. This means that the variables in the question can be called random.
+
+The last part of the question generation is the skeleton itself. This part could not be called random, as there are only three types of base questions. To this extent the questions are not fully randomly generated.
+
+
+To summarise, this point of the success criteria has been almost fully met. This is because the numbers generated are random, but the actual question itself is not fully random. This can cause a problem, as if the program is used extensively, the user may start to learn tricks on how to answer that specific type of question, rather than focusing on the general method of solving mechanics problems. I am not fully happy with the question generation, but with the time available, I think it was the best solution that could have been created.
+\subsection{Realistic values}
+ The values can be realistic in two different senses, that they are values that would appear in a real life scenario, or they are values that would appear in an exam question. The values produced in this program conform more to the latter, as this tool is intended to be used mainly for revision purposes. The data collected is shown in Section 5.2, and the main point shown is that the answers are not exact. This is a good feature, as it is how it would be in an exam, and making all of the answers exact means that the user can tell if their answer is more likely to be correct. This means that the questions where the user is asked to "find $\theta$" could be improved to have non exact answers, as all of the answers to this question type are an integer between 40 and 60 degrees, so this can help the user to check their answer, which is an unwanted feature. This is an unwanted feature because there would not be a confidence range like this in exam questions.
+ 
+ This point in the success criteria is met well, as the answers are similar to what would be found in an exam. The only problem in this section is the answers to the "find $\theta$" questions, as they are not like what would be seen in an exam.
+\subsection{Display time}
+The data for this is analysed in detail from Section 4.3 to 4.5. The important data to take from this is Figure 4.7, which is shown below.
+\begin{figure}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		Runtime (s) & Average runtime (s)       \\
+		
+		1.282348    &  \multirow{5}{*}{1.218165}\\
+		
+		0.972347    &                           \\
+		
+		1.588344    &                           \\
+		
+		1.194223    &                           \\
+		
+		1.053565    &\\
+		\hline       
+	\end{tabular}
+	\caption{Runtimes of \texttt{generate\_question function}}
+\end{figure}
+This shows that the average run time is just over 1 second, at 1.218165 seconds. This does not fully meet the point in the success criteria, that states that the "Random question should be displayed to the user within a second". However, 1.2 seconds is only slightly above the require time, so the users will not be affected by this too much. Over a long period of use, this additional time would add up, and it could become an annoyance to the user.
+
+Overall this point in the success criteria has not been met very well. It is over the required time, and this time was set, to avoid user frustration. Additionally, one of the points of developing this software was to save time for the user, so that they don't have to spend time finding questions on a topic that they would like to practice. So having to wait a long time for a question to be displayed to them might make the user stop using using the program.
+\subsection{Answer verification}
+The test data for this can be found in Section 5.4. It has shown that the student's answer is marked as correct no matter the number of digits, not the number of significant figures. There is one case where the student's answer was marked as incorrect when it was correct, which is when the user gave their answer to more digits than the computer had calculated in their answer.
+
+The point in the success criteria, "Student's answers should be verified no matter the amount of significant figures", has almost been met, but instead of depending on the number of significant figures, this solution depends on the number of digits in the student's answer. In practice their is no difference in using significant figures or number of digits, so this is not a problem. However, the case where user's answers were marked incorrect when they gave their answer to more digits than the programs answer is a problem, as it will confuse students when they have a technically correct answer that is marked wrong. This is an extreme case however, as it is unlikely that a student will give their answer to this amount of digits. Also if the student gave their answer to this many digits in an exam, they would be marked wrong.
+\subsection{GUI}
+There is no test data for this part, as it is mostly subjective. So from my experience of the program, and from the feedback from stakeholders who have tested the product, the GUI is easy to use. The question is clearly visible, and so is the diagram. The diagram could be zoomed in more, as the values can be hard to read when the particle is launched with a high speed and angle. It is clear where to submit your answer, due to the placeholder text in the submit box. 
+
+Improvements to be made are to make the layout cleaner, as at the moment there are large gaps between the elements, and this is wasted space on the screen. Also the text in the buttons needs to be redesigned so that it is smaller, or the button is bigger. This is because not all of the button text is visible, which could cause confusion to the user.
+\section{Usability features}
+\subsection{GUI}
+The usability feature required was "An easy to use, intuitive GUI". This has been accomplished as discussed in the previous section, Section 6.1.5. The user knows what to do without being told, and they can do this easily. To improve usability, tooltips could be added on certain buttons, to explain to the user further what specific buttons do.
+\subsection{Answer feedback}
+This has also been achieved. If the user gets the answer wrong they are taken back to the question screen, and they have the option to skip the question using the easy to see button in the top right hand side of the screen. The user does not have an option to skip the question in the popup menu telling them that they got the question wrong however, so this could be added in later development to save time for the users.
+\section{Further development}
+\subsection{Question generation}
+To further develop this there are two options, either create many more question skeletons, or create a system that generates question skeletons. The latter solution would require complex machine learning, and is much too complex for a program like this. It would be better to create more question skeletons, which would not take much time. All that has to be done is find exam questions, or textbook questions and then isolate the variable that should be randomised in the question. The question can then be added to the textfile using syntax required. A new equation type method would have to be developed for each new question skeleton so this would take a long time. Also a new diagram would have to be created for them, which would also take time.
+\subsection{Graph generation}
+The scale for the diagram can be changed so that the values are easier to read when the image is zoomed out. The graph becomes too zoomed out when the maximum height of the projectile is big, so this could be fixed by either reducing the maximum angle and maximum speed in the question skeleton, or changing the size of the labels depending on the zoom factor of the diagram.
+\subsection{GUI}
+This can be developed to improve the layout, so there is less blank space between each important element on screen. Also it could be made so that it is scalable with higher resolution screens. This was found to be a problem when the program was tested on a 3840 x 2160 screen. Also when the program is resized, the elements don't move. This can cause the elements to be squashed off the visible space, or leave a big space of grey, which is ugly.
+\subsection{Answer feedback}
+A way of restricting user's answers to the same number of digits as the answer calculated by the program should be developed, to stop situations where a technically correct answer is marked as incorrect by the program.
+\section{Maintenance and limitations}
+The only maintenance required for this software would be to change the questions, or to add new ones when the exam board changes the question style. As there will be a new maths syllabus starting next academic year, this could render this program obsolete.

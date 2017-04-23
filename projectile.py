@@ -55,4 +55,4 @@ def generate(y_offset):
 
 
 if __name__ == '__main__':
-    generate()
+    generate(12)

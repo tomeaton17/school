@@ -1,6 +1,7 @@
 import math
 import os
 import sys
+import timeit
 
 from PyQt5 import QtGui, QtWidgets
 
@@ -61,13 +62,10 @@ class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
         if '.' in self.lineEdit.text():
             exponent = len(self.lineEdit.text().split('.')[1])
             rounded_answer = round(self.answer, exponent)
-            print(rounded_answer)
         else:
             rounded_answer = self.answer / 10
-            print(rounded_answer)
             rounded_answer = round(rounded_answer, 1)
             rounded_answer *= 10
-            print(rounded_answer)
             rounded_answer = int(rounded_answer)
         if str(rounded_answer) == str(self.lineEdit.text()):
             QtWidgets.QMessageBox.information(self, "Well done", "Congrats")
@@ -78,24 +76,28 @@ class SuvatApp(QtWidgets.QMainWindow, projectilegui.Ui_suvat):
             self.lineEdit.setText("")
 
     def generate_question(self):
+        start = timeit.default_timer()
         string = str(questionStore.load("projectilemotionquestions", self.randomised))
-        temp = self.randomised.format(string)
+        temp = string
         temporary_object = self.randomised.get_class()
         if (self.randomised.args['equation'] == 'findtheta'):
-            temp = str(temp) + str(temporary_object.answer_max_height()) + " Find theta in degreees."
+            temp = str(string) + str(temporary_object.answer_max_height()) + " Find theta in degreees."
             self.answer = temporary_object.answer_theta()
         if (self.randomised.args['equation'] == 'findmaxheight'):
             self.answer = temporary_object.answer_max_height()
         if (self.randomised.args['equation'] == 'findxdistance'):
-            temp = str(temp) + str(
-                temporary_object.answer_max_height()) + ". How far does the ball travel before it hits the ground?"
+            temp = str(string) + str(
+            temporary_object.answer_max_height()) + ". How far does the ball travel before it hits the ground?"
             self.answer = temporary_object.answer_xdistance()
         self.label_3.setText(temp)
+
+
 
         pixmap = QtGui.QPixmap("smaller.png")
         self.label.setPixmap(pixmap)
         os.remove('test.png')
         os.remove('smaller.png')
+        print("Runtime:", timeit.default_timer() - start)
 
     def closeEvent(self, event):
         # noinspection PyTypeChecker,PyCallByClass
