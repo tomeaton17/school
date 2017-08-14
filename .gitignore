@@ -101,4 +101,4 @@ ENV/
 /test.png
 
 #Tex
-/latex/*.aux
+latex/*.aux
