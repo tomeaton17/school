@@ -99,3 +99,6 @@ ENV/
 .idea/dictionaries/TomEaton.xml
 /smaller.png
 /test.png
+
+#Tex
+/latex/*.aux
